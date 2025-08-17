@@ -29,12 +29,12 @@ globalStyle('img', {
     maxWidth: '100%',
 });
 
-// form 요소 스타일 초기화
-globalStyle('button, input, select, textarea', {
-    font: 'inherit',
-    background: 'none',
-    border: 'none',
-    padding: 0,
-    margin: 0,
-    color: 'inherit',
-});
+// // form 요소 스타일 초기화
+// globalStyle('button, input, select, textarea', {
+//     font: 'inherit',
+//     background: 'none',
+//     border: 'none',
+//     padding: 0,
+//     margin: 0,
+//     color: 'inherit',
+// });
