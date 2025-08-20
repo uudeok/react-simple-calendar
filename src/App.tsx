@@ -1,8 +1,11 @@
+import { Calendar } from './compoentns/Calendar/Calendar';
+
 function App() {
     return (
-        <div>
-            <div>hello world</div>
-        </div>
+        <>
+            <Calendar theme="dark" />
+            <Calendar theme="light" />
+        </>
     );
 }
 
