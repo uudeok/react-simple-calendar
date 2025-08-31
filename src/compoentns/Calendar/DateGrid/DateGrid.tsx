@@ -1,4 +1,4 @@
-import { DateCell } from './DateCell';
+import { DateCell } from '../DateCell/DateCell';
 
 const DateGrid = () => {
     return (

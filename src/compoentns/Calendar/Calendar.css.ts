@@ -2,8 +2,12 @@ import { style } from '@vanilla-extract/css';
 import { theme } from '../../styles/theme.css';
 
 export const calendarRoot = style({
-    borderRadius: '8px',
-    padding: '16px',
-    backgroundColor: theme.colors.shadeLight,
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    borderRadius: '12px',
+    padding: '1rem',
+
+    background: theme.colors.shadeLightest,
     color: theme.colors.textPrimary,
 });

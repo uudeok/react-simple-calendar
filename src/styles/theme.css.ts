@@ -19,7 +19,7 @@ export const theme = createThemeContract({
 // 라이트 테마
 export const lightTheme = createTheme(theme, {
     colors: {
-        shadeLightest: '#FBFBFF',
+        shadeLightest: '#FFFFFF',
         shadeLight: '#EFEFF5',
         shadeDark: '#E0E0E6',
         shadeDarkest: '#BABAC0',
