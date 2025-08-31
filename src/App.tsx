@@ -3,8 +3,8 @@ import { Calendar } from './compoentns/Calendar/Calendar';
 function App() {
     return (
         <>
+            <Calendar />
             <Calendar theme="dark" />
-            <Calendar theme="light" />
         </>
     );
 }

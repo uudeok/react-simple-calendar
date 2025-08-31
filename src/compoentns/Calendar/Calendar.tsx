@@ -1,5 +1,8 @@
 import { lightTheme, darkTheme } from '../../styles/theme.css';
 import { calendarRoot } from './Calendar.css';
+import DateGrid from './DateGrid';
+import DayOfWeek from './DayOfWeek';
+import CalendarHeader from './Header';
 
 type ThemeType = 'light' | 'dark';
 
@@ -12,9 +15,9 @@ export const Calendar: React.FC<CalendarProps> = ({ theme = 'light' }) => {
 
     return (
         <div className={`${calendarRoot} ${themeClass}`}>
-            <div>월요일</div>
-            <div>화요일</div>
-            {/* ... 달력 내용 */}
+            <CalendarHeader />
+            <DayOfWeek />
+            <DateGrid />
         </div>
     );
 };
