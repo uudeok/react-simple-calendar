@@ -4,6 +4,7 @@ import DateGrid from './DateGrid/DateGrid';
 import DayOfWeek from './DayOfWeek/DayOfWeek';
 import CalendarHeader from './CalendarHeader/CalendarHeader';
 import { calendarRoot } from './Calendar.css';
+import { typographyTheme } from '../../styles/typography.css';
 
 type ThemeType = 'light' | 'dark';
 
@@ -18,7 +19,7 @@ export const Calendar: React.FC<CalendarProps> = (props: CalendarProps) => {
     const themeClass = theme === 'dark' ? darkTheme : lightTheme;
 
     return (
-        <div className={`${calendarRoot} ${themeClass}`}>
+        <div className={`${calendarRoot} ${themeClass} ${typographyTheme}`}>
             <CalendarHeader />
             <DayOfWeek local={local} />
             <DateGrid />
