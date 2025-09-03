@@ -7,7 +7,7 @@ export const container = style({
     textAlign: 'center',
     padding: '8px 0',
 
-    color: theme.colors.textPrimary,
+    color: theme.colors.textSecondary,
 });
 
 export const weekCell = style({

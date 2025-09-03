@@ -13,9 +13,9 @@ const DayOfWeek = ({ locale }: Props) => {
     return (
         <div className={container}>
             {weeks.map((week) => (
-                <div key={week} className={weekCell}>
+                <span key={week} className={weekCell}>
                     {week}
-                </div>
+                </span>
             ))}
         </div>
     );

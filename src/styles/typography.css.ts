@@ -10,6 +10,7 @@ export const typography = createThemeContract({
     fontWeight: {
         light: null,
         normal: null,
+        semiBold: null,
         bold: null,
     },
 });
@@ -24,6 +25,7 @@ export const typographyTheme = createTheme(typography, {
     fontWeight: {
         light: '300',
         normal: '500',
+        semiBold: '700',
         bold: '900',
     },
 });

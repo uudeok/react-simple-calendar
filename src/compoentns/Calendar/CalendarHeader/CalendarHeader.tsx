@@ -1,4 +1,6 @@
-import { header, date, navButton } from './style.css';
+import NavNextButton from '../../common/Button/NavNextButton';
+import NavPreButton from '../../common/Button/NavPrevButton';
+import { header, date, navGroup } from './style.css';
 
 type Props = {
     customPrevButton?: React.ReactNode;
@@ -10,9 +12,15 @@ const CalendarHeader = (props: Props) => {
 
     return (
         <div className={header}>
-            {customPrevButton ? customPrevButton : <button className={navButton}>&lt;</button>}
-            <div className={date}>2025.09</div>
-            {customNextButton ? customNextButton : <button className={navButton}>&gt;</button>}
+            <div className={date}>
+                <span>2025.09</span>
+                <NavNextButton />
+            </div>
+
+            <div className={navGroup}>
+                {customPrevButton ? customPrevButton : <NavPreButton />}
+                {customNextButton ? customNextButton : <NavNextButton />}
+            </div>
         </div>
     );
 };

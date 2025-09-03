@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { theme } from '../../../styles/theme.css';
+import { typography } from '../../../styles/typography.css';
 
 export const datecell = style({
     display: 'flex',
@@ -12,14 +13,15 @@ export const datecell = style({
     transition: 'background 0.2s, color 0.2s',
     color: theme.colors.textPrimary,
     background: 'transparent',
+    fontWeight: typography.fontWeight.semiBold,
 
     selectors: {
         '&:hover': {
-            background: 'var(--highlight-color, #4A90E2)', // 기본값은 파랑, 유저가 오버라이드 가능
+            background: `var(--highlight-color, ${theme.colors.hightlight})`,
             color: '#fff',
         },
         '&:focus': {
-            outline: '2px solid var(--highlight-color, #4A90E2)',
+            outline: `2px solid var(--highlight-color, ${theme.colors.hightlight})`,
         },
     },
 });
