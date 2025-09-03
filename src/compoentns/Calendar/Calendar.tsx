@@ -2,7 +2,7 @@ import { lightTheme, darkTheme } from '../../styles/theme.css';
 import type { LocaleType, ThemeType } from '../../types';
 import DateGrid from './DateGrid/DateGrid';
 import DayOfWeek from './DayOfWeek/DayOfWeek';
-import CalendarHeader from './CalendarHeader/CalendarHeader';
+import CalendarNav from './CalendarNav/CalendarNav';
 import { calendarRoot } from './Calendar.css';
 import { typographyTheme } from '../../styles/typography.css';
 import { LOCALE, THEME } from '../../constants';
@@ -21,7 +21,7 @@ export const Calendar: React.FC<CalendarProps> = (props: CalendarProps) => {
 
     return (
         <div className={`${calendarRoot} ${themeClass} ${typographyTheme}`}>
-            <CalendarHeader customNextButton={customNextButton} customPrevButton={customPrevButton} />
+            <CalendarNav customNextButton={customNextButton} customPrevButton={customPrevButton} />
             <DayOfWeek locale={locale} />
             <DateGrid />
         </div>

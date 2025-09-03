@@ -9,7 +9,7 @@ const DateGrid = () => {
     return (
         <div className={grid}>
             {fakeDate.map((date) => (
-                <DateCell key={date} cell={date} />
+                <DateCell key={date} date={date} />
             ))}
         </div>
     );

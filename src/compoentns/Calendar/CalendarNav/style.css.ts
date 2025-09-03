@@ -1,14 +1,14 @@
 import { style } from '@vanilla-extract/css';
 import { typography } from '../../../styles/typography.css';
 
-export const header = style({
+export const layout = style({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '8px 12px',
 });
 
-export const date = style({
+export const monthLabel = style({
     display: 'flex',
     alignItems: 'center',
 

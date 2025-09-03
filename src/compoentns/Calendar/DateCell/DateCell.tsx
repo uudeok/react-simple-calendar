@@ -1,15 +1,15 @@
 import { datecell } from './style.css';
 
 type Props = {
-    cell: number;
+    date: number;
 };
 
 export const DateCell = (props: Props) => {
-    const { cell } = props;
+    const { date } = props;
 
     return (
         <div className={datecell}>
-            <span>{cell}</span>
+            <span>{date}</span>
         </div>
     );
 };
