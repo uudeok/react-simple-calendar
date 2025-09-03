@@ -1,4 +1,6 @@
 import type { ValueOf } from '.';
-import type { LOCALE } from '../constants';
+import type { LOCALE, THEME } from '../constants';
 
 export type LocaleType = ValueOf<typeof LOCALE>;
+
+export type ThemeType = ValueOf<typeof THEME>;

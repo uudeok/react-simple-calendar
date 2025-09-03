@@ -1,27 +1,28 @@
 import { lightTheme, darkTheme } from '../../styles/theme.css';
-import type { LocaleType } from '../../types';
+import type { LocaleType, ThemeType } from '../../types';
 import DateGrid from './DateGrid/DateGrid';
 import DayOfWeek from './DayOfWeek/DayOfWeek';
 import CalendarHeader from './CalendarHeader/CalendarHeader';
 import { calendarRoot } from './Calendar.css';
 import { typographyTheme } from '../../styles/typography.css';
-
-type ThemeType = 'light' | 'dark';
+import { LOCALE, THEME } from '../../constants';
 
 interface CalendarProps {
     theme?: ThemeType;
-    local?: LocaleType;
+    locale?: LocaleType;
+    customPrevButton?: React.ReactNode;
+    customNextButton?: React.ReactNode;
 }
 
 export const Calendar: React.FC<CalendarProps> = (props: CalendarProps) => {
-    const { theme = 'light', local = 'ko' } = props;
+    const { theme = THEME.LIGHT, locale = LOCALE.ko, customPrevButton, customNextButton } = props;
 
-    const themeClass = theme === 'dark' ? darkTheme : lightTheme;
+    const themeClass = theme === THEME.DARK ? darkTheme : lightTheme;
 
     return (
         <div className={`${calendarRoot} ${themeClass} ${typographyTheme}`}>
-            <CalendarHeader />
-            <DayOfWeek local={local} />
+            <CalendarHeader customNextButton={customNextButton} customPrevButton={customPrevButton} />
+            <DayOfWeek locale={locale} />
             <DateGrid />
         </div>
     );

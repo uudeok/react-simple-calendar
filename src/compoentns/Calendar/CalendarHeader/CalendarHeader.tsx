@@ -1,11 +1,18 @@
-import { header, navBtn, next, nextDouble, prev, prevDouble, date } from './style.css';
+import { header, date, navButton } from './style.css';
 
-const CalendarHeader = () => {
+type Props = {
+    customPrevButton?: React.ReactNode;
+    customNextButton?: React.ReactNode;
+};
+
+const CalendarHeader = (props: Props) => {
+    const { customNextButton, customPrevButton } = props;
+
     return (
         <div className={header}>
-            <button className={`${navBtn} ${prev} ${prevDouble}`} aria-label="이전 달"></button>
+            {customPrevButton ? customPrevButton : <button className={navButton}>&lt;</button>}
             <div className={date}>2025.09</div>
-            <button className={`${navBtn} ${next} ${nextDouble}`} aria-label="다음 달" />
+            {customNextButton ? customNextButton : <button className={navButton}>&gt;</button>}
         </div>
     );
 };

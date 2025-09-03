@@ -4,11 +4,11 @@ import type { LocaleType } from '../../../types';
 import { container, weekCell } from './style.css';
 
 type Props = {
-    local: LocaleType;
+    locale: LocaleType;
 };
 
-const DayOfWeek = ({ local }: Props) => {
-    const weeks = WEEK[local];
+const DayOfWeek = ({ locale }: Props) => {
+    const weeks = WEEK[locale];
 
     return (
         <div className={container}>
