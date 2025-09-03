@@ -1,9 +1,15 @@
-export const DateCell = () => {
+import { datecell } from './style.css';
+
+type Props = {
+    cell: number;
+};
+
+export const DateCell = (props: Props) => {
+    const { cell } = props;
+
     return (
-        <div>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
+        <div className={datecell}>
+            <span>{cell}</span>
         </div>
     );
 };

@@ -2,9 +2,9 @@ import { Calendar } from './compoentns/Calendar/Calendar';
 
 function App() {
     return (
-        <div style={{ display: 'flex', gap: '20px', width: '840px' }}>
+        <div style={{ display: 'flex', gap: '20px', width: '820px' }}>
             <Calendar />
-            <Calendar theme="dark" />
+            <Calendar theme="dark" locale="en" />
         </div>
     );
 }
