@@ -1,10 +1,18 @@
+import { useState } from 'react';
 import { Calendar } from './compoentns/Calendar/Calendar';
 
 function App() {
+    const [date, setDate] = useState(new Date());
+
+    const handleDate = (date: Date) => {
+        setDate(date);
+        console.log('선택한 날짜 : ', date);
+    };
+
     return (
         <div style={{ display: 'flex', gap: '20px', width: '820px' }}>
-            <Calendar />
-            <Calendar theme="dark" locale="en" />
+            <Calendar date={date} onChange={handleDate} />
+            <Calendar theme="dark" locale="en" date={date} onChange={handleDate} />
         </div>
     );
 }
