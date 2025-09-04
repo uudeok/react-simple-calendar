@@ -7,10 +7,11 @@ import { layout, monthLabel, navGroup } from './style.css';
 type Props = {
     customPrevButton?: React.ReactNode;
     customNextButton?: React.ReactNode;
+    showMonthAndYear?: boolean;
 };
 
 const CalendarNav = (props: Props) => {
-    const { customNextButton, customPrevButton } = props;
+    const { customNextButton, customPrevButton, showMonthAndYear = false } = props;
 
     const { selectedDate, setSelectedDate } = useCalendarContext();
 
@@ -29,11 +30,10 @@ const CalendarNav = (props: Props) => {
 
     return (
         <div className={layout}>
-            <div className={monthLabel}>
+            <div className={monthLabel({ clickable: showMonthAndYear })}>
                 <span>
                     {year}.{month}
                 </span>
-                <NavButton />
             </div>
 
             <div className={navGroup}>
