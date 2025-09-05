@@ -1,6 +1,5 @@
 import { style } from '@vanilla-extract/css';
 import { theme } from '../../../styles/theme.css';
-import { typography } from '../../../styles/typography.css';
 
 export const datecell = style({
     display: 'flex',
@@ -13,7 +12,6 @@ export const datecell = style({
     transition: 'background 0.2s, color 0.2s',
     color: theme.colors.textPrimary,
     background: 'transparent',
-    fontWeight: typography.fontWeight.semiBold,
 
     selectors: {
         '&:hover': {

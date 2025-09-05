@@ -10,9 +10,9 @@ function App() {
     };
 
     return (
-        <div style={{ display: 'flex', gap: '20px', width: '820px' }}>
+        <div style={{ display: 'flex', gap: '20px', width: '800px' }}>
             <Calendar date={date} onChange={handleDate} />
-            <Calendar theme="dark" locale="en" date={date} onChange={handleDate} showMonthAndYear />
+            <Calendar theme="dark" locale="en" date={date} onChange={handleDate} />
         </div>
     );
 }
@@ -22,3 +22,4 @@ export default App;
 /**
  * 1, 사용하는 쪽에서 너비를 조정할 수 있도록 함 -> 캘린더의 너비는 부모의 100% 이다.
  */
+// <div style={{ display: 'flex', gap: '20px', width: '800px' }}>

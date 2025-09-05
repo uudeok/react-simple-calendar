@@ -15,31 +15,19 @@ interface CalendarProps {
     locale?: LocaleType;
     customPrevButton?: React.ReactNode;
     customNextButton?: React.ReactNode;
-    showMonthAndYear?: boolean;
 }
 
 export const Calendar: React.FC<CalendarProps> = (props: CalendarProps) => {
-    const {
-        date,
-        onChange,
-        theme = THEME.LIGHT,
-        locale = LOCALE.ko,
-        customPrevButton,
-        customNextButton,
-        showMonthAndYear,
-    } = props;
+    const { date, onChange, theme = THEME.LIGHT, locale = LOCALE.ko, customPrevButton, customNextButton } = props;
 
     const themeClass = theme === THEME.DARK ? darkTheme : lightTheme;
 
     return (
         <CalendarProvider initialDate={date} onChange={onChange}>
             <div className={`${calendarRoot} ${themeClass} ${typographyTheme}`}>
-                <CalendarNav
-                    customNextButton={customNextButton}
-                    customPrevButton={customPrevButton}
-                    showMonthAndYear={showMonthAndYear}
-                />
+                <CalendarNav customNextButton={customNextButton} customPrevButton={customPrevButton} />
                 <DayOfWeek locale={locale} />
+
                 <DateGrid />
             </div>
         </CalendarProvider>
