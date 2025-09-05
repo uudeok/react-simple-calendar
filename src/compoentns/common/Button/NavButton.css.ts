@@ -10,7 +10,7 @@ export const navButton = style({
     background: 'transparent',
     border: 'none',
 
-    fontSize: typography.fontSize.subtitle,
+    fontSize: typography.fontSize.heading,
     cursor: 'pointer',
     color: theme.colors.hightlight,
 
