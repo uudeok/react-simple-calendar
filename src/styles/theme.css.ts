@@ -14,6 +14,7 @@ export const theme = createThemeContract({
         grayDarker: null,
         grayDarkest: null,
         hightlight: null,
+        white: null,
     },
 });
 
@@ -32,6 +33,7 @@ export const lightTheme = createTheme(theme, {
         grayDarker: '#808A97',
         grayDarkest: '#747E8A',
         hightlight: '#FF7A3E',
+        white: '#FFFFFF',
     },
 });
 
@@ -50,5 +52,6 @@ export const darkTheme = createTheme(theme, {
         grayDarker: '#6D6D76',
         grayDarkest: '#606068',
         hightlight: '#FF7A3E',
+        white: '#FFFFFF',
     },
 });

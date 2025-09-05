@@ -1,3 +1,4 @@
+import useCalendarContext from '../../../contexts/CaneldarContext';
 import { getDisplayDate } from '../../../utils/date';
 import { datecell } from './style.css';
 
@@ -8,9 +9,13 @@ type Props = {
 export const DateCell = (props: Props) => {
     const { date } = props;
 
+    const { selectedDate, setSelectedDate } = useCalendarContext();
+
+    const isSelected = selectedDate.toDateString() === date.toDateString();
+
     return (
-        <div className={datecell}>
-            <span>{getDisplayDate(date)}</span>
-        </div>
+        <button onClick={() => setSelectedDate(date)} className={datecell({ selected: isSelected })}>
+            {getDisplayDate(date)}
+        </button>
     );
 };
