@@ -1,7 +1,8 @@
+import { getDisplayDate } from '../../../utils/date';
 import { datecell } from './style.css';
 
 type Props = {
-    date: number;
+    date: Date;
 };
 
 export const DateCell = (props: Props) => {
@@ -9,7 +10,7 @@ export const DateCell = (props: Props) => {
 
     return (
         <div className={datecell}>
-            <span>{date}</span>
+            <span>{getDisplayDate(date)}</span>
         </div>
     );
 };

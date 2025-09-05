@@ -14,3 +14,5 @@ export const THEME = {
     LIGHT: 'light',
     DARK: 'dark',
 } as const;
+
+export const CALENDAR_TOTAL_CELLS = 42;

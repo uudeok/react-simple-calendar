@@ -3,5 +3,5 @@ export const getYear = (date: Date) => {
 };
 
 export const getMonth = (date: Date) => {
-    return date.getMonth() + 1;
+    return date.getMonth();
 };

@@ -10,7 +10,7 @@ function App() {
     };
 
     return (
-        <div style={{ display: 'flex', gap: '20px', width: '800px' }}>
+        <div style={{ display: 'flex', gap: '50px', width: '860px', margin: 'auto' }}>
             <Calendar date={date} onChange={handleDate} />
             <Calendar theme="dark" locale="en" date={date} onChange={handleDate} />
         </div>
