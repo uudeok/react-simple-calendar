@@ -2,14 +2,19 @@ import type { LocaleType, ThemeType } from '../../types';
 import CalendarProvider from '../../contexts/CalendarProvider';
 import CalendarContent from './CalendarContent';
 
-interface CalendarProps {
+interface CalendarRequired {
     date: Date;
     onChange: (date: Date) => void;
+}
+
+export interface CalendarOptional {
     theme?: ThemeType;
     locale?: LocaleType;
     customPrevButton?: React.ReactNode;
     customNextButton?: React.ReactNode;
 }
+
+export type CalendarProps = CalendarRequired & CalendarOptional;
 
 export const Calendar: React.FC<CalendarProps> = (props: CalendarProps) => {
     const { date, onChange, ...rest } = props;

@@ -1,5 +1,5 @@
 import useCalendarContext from '../../../contexts/CaneldarContext';
-import { getDisplayDate } from '../../../utils/date';
+import { getDate } from '../../../utils/date';
 import { datecell } from './style.css';
 
 type Props = {
@@ -15,7 +15,7 @@ export const DateCell = (props: Props) => {
 
     return (
         <button onClick={() => setSelectedDate(date)} className={datecell({ selected: isSelected })}>
-            {getDisplayDate(date)}
+            {getDate(date)}
         </button>
     );
 };

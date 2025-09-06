@@ -12,7 +12,7 @@ export const goToPrevMonth = (date: Date): Date => {
     return prev;
 };
 
-export const renderDate = (date: Date, totalCells: number) => {
+export const generateDates = (date: Date, totalCells: number) => {
     const year = getYear(date);
     const month = getMonth(date);
 

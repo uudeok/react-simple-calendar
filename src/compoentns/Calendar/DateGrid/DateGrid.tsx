@@ -1,13 +1,13 @@
 import { CALENDAR_TOTAL_CELLS } from '../../../constants';
 import useCalendarContext from '../../../contexts/CaneldarContext';
-import { renderDate } from '../../../utils/date';
+import { generateDates } from '../../../utils/date';
 import { DateCell } from '../DateCell/DateCell';
 import { grid } from './style.css';
 
 const DateGrid = () => {
     const { selectedDate } = useCalendarContext();
 
-    const dates = renderDate(selectedDate, CALENDAR_TOTAL_CELLS);
+    const dates = generateDates(selectedDate, CALENDAR_TOTAL_CELLS);
 
     return (
         <div className={grid}>

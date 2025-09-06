@@ -1,13 +1,11 @@
 import { memo } from 'react';
 import { WEEK } from '../../../constants';
-import type { LocaleType } from '../../../types';
 import { layout } from './style.css';
+import type { CalendarOptional } from '../Calendar';
 
-type Props = {
-    locale: LocaleType;
-};
+type DayOfWeekProps = Pick<CalendarOptional, 'locale'>;
 
-const DayOfWeek = ({ locale }: Props) => {
+const DayOfWeek = ({ locale = 'ko' }: DayOfWeekProps) => {
     const weeks = WEEK[locale];
 
     return (

@@ -11,14 +11,3 @@ export const calendarRoot = style({
     background: theme.colors.shadeLightest,
     color: theme.colors.textPrimary,
 });
-
-// export const calendarRoot = style({
-//     display: 'flex',
-//     flexDirection: 'column',
-//     width: '100%',
-//     borderRadius: '12px',
-//     padding: '1rem',
-
-//     background: theme.colors.shadeLightest,
-//     color: theme.colors.textPrimary,
-// });

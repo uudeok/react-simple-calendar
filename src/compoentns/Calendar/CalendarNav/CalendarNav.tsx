@@ -2,14 +2,12 @@ import useCalendarContext from '../../../contexts/CaneldarContext';
 import { getDisplayMonth, getYear, goToNextMonth, goToPrevMonth } from '../../../utils/date';
 
 import NavButton from '../../common/Button/NavButton';
+import type { CalendarOptional } from '../Calendar';
 import { layout, monthLabel, navGroup } from './style.css';
 
-type Props = {
-    customPrevButton?: React.ReactNode;
-    customNextButton?: React.ReactNode;
-};
+type CalendarNavProps = Pick<CalendarOptional, 'customNextButton' | 'customPrevButton'>;
 
-const CalendarNav = (props: Props) => {
+const CalendarNav = (props: CalendarNavProps) => {
     const { customNextButton, customPrevButton } = props;
 
     const { selectedDate, setSelectedDate } = useCalendarContext();
