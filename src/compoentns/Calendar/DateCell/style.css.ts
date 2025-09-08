@@ -28,5 +28,12 @@ export const datecell = recipe({
                 color: theme.colors.textPrimary,
             },
         },
+        disabled: {
+            true: {
+                cursor: 'not-allowed',
+                color: theme.colors.gray,
+            },
+            false: {}, // 기본값은 그대로
+        },
     },
 });

@@ -13,6 +13,7 @@ export interface CalendarOptional {
     customPrevButton?: React.ReactNode;
     customNextButton?: React.ReactNode;
     customWeek?: string[];
+    filterDate?: (date: Date) => boolean;
 }
 
 export type CalendarProps = CalendarRequired & CalendarOptional;

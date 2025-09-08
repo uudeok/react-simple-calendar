@@ -7,14 +7,21 @@ import CalendarNav from './CalendarNav/CalendarNav';
 import DateGrid from './DateGrid/DateGrid';
 import DayOfWeek from './DayOfWeek/DayOfWeek';
 
-const CalendarContent = ({ theme, locale, customPrevButton, customNextButton, customWeek }: CalendarOptional) => {
+const CalendarContent = ({
+    theme,
+    locale,
+    customPrevButton,
+    customNextButton,
+    customWeek,
+    filterDate,
+}: CalendarOptional) => {
     const themeClass = theme === THEME.DARK ? darkTheme : lightTheme;
 
     return (
         <div className={`${calendarRoot} ${themeClass} ${typographyTheme}`}>
             <CalendarNav customPrevButton={customPrevButton} customNextButton={customNextButton} />
             <DayOfWeek locale={locale} customWeek={customWeek} />
-            <DateGrid />
+            <DateGrid filterDate={filterDate} />
         </div>
     );
 };

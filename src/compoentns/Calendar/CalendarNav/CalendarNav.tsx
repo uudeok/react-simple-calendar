@@ -13,18 +13,18 @@ const CalendarNav = (props: CalendarNavProps) => {
 
     const { selectedDate, setSelectedDate } = useCalendarContext();
 
-    const { goToNextMonth, goToPrevMonth } = useCalendar();
+    const { goToNextMonth, goToPrevMonth } = useCalendar(selectedDate);
 
     const year = getYear(selectedDate);
     const month = getDisplayMonth(selectedDate);
 
     const handlePrevMonth = () => {
-        const prevMonth = goToPrevMonth(selectedDate);
+        const prevMonth = goToPrevMonth();
         setSelectedDate(prevMonth);
     };
 
     const handleNextMonth = () => {
-        const nextMonth = goToNextMonth(selectedDate);
+        const nextMonth = goToNextMonth();
         setSelectedDate(nextMonth);
     };
 

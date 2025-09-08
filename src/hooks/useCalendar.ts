@@ -1,19 +1,19 @@
 import { getMonth, getYear } from '../utils/date';
 
-export const useCalendar = () => {
-    const goToPrevMonth = (date: Date) => {
+export const useCalendar = (date: Date) => {
+    const goToPrevMonth = () => {
         const prev = new Date(date);
         prev.setMonth(prev.getMonth() - 1);
         return prev;
     };
 
-    const goToNextMonth = (date: Date) => {
+    const goToNextMonth = () => {
         const next = new Date(date);
         next.setMonth(next.getMonth() + 1);
         return next;
     };
 
-    const generateDates = (date: Date, totalCells: number) => {
+    const generateDates = (totalCells: number) => {
         const year = getYear(date);
         const month = getMonth(date);
 
