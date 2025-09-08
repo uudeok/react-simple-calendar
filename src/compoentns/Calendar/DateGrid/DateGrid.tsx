@@ -6,10 +6,12 @@ import { grid } from './style.css';
 
 type DateGridProps = {
     filterDate?: (date: Date) => boolean;
+    minDate?: Date;
+    maxDate?: Date;
 };
 
 const DateGrid = (props: DateGridProps) => {
-    const { filterDate } = props;
+    const { filterDate, minDate, maxDate } = props;
 
     const { selectedDate } = useCalendarContext();
 
@@ -17,10 +19,26 @@ const DateGrid = (props: DateGridProps) => {
 
     const dates = generateDates(CALENDAR_TOTAL_CELLS);
 
+    const isBeforeMinDate = (date: Date) => {
+        if (!minDate) return false;
+        return date < minDate;
+    };
+
+    const isAfterMaxDate = (date: Date) => {
+        if (!maxDate) return false;
+        return maxDate < date;
+    };
+
     return (
         <div className={grid}>
             {dates.map((date, idx) => (
-                <DateCell key={idx} date={date} filterDate={filterDate} />
+                <DateCell
+                    key={idx}
+                    date={date}
+                    filterDate={filterDate}
+                    isBeforeMinDate={isBeforeMinDate}
+                    isAfterMaxDate={isAfterMaxDate}
+                />
             ))}
         </div>
     );

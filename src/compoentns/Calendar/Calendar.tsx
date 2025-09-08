@@ -14,6 +14,8 @@ export interface CalendarOptional {
     customNextButton?: React.ReactNode;
     customWeek?: string[];
     filterDate?: (date: Date) => boolean;
+    minDate?: Date;
+    maxDate?: Date;
 }
 
 export type CalendarProps = CalendarRequired & CalendarOptional;

@@ -15,14 +15,14 @@ function App() {
         console.log('선택한 날짜 : ', date);
     };
 
-    const isWeekday = (date: Date): boolean => {
+    const isWeekday = (date: Date) => {
         const day = date.getDay();
         return day === 0 || day === 6;
     };
 
     return (
         <div style={{ display: 'flex', gap: '50px', width: '860px', margin: 'auto' }}>
-            <Calendar date={date1} onChange={handleDate1} filterDate={isWeekday} />
+            <Calendar date={date1} onChange={handleDate1} minDate={new Date(2025, 8, 1)} maxDate={new Date()} />
             <Calendar
                 date={date2}
                 onChange={handleDate2}
