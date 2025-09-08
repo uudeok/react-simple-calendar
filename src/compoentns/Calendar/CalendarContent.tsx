@@ -16,6 +16,7 @@ const CalendarContent = ({
     filterDate,
     minDate,
     maxDate,
+    showToday,
 }: CalendarOptional) => {
     const themeClass = theme === THEME.DARK ? darkTheme : lightTheme;
 
@@ -23,7 +24,7 @@ const CalendarContent = ({
         <div className={`${calendarRoot} ${themeClass} ${typographyTheme}`}>
             <CalendarNav customPrevButton={customPrevButton} customNextButton={customNextButton} />
             <DayOfWeek locale={locale} customWeek={customWeek} />
-            <DateGrid filterDate={filterDate} minDate={minDate} maxDate={maxDate} />
+            <DateGrid filterDate={filterDate} minDate={minDate} maxDate={maxDate} showToday={showToday} />
         </div>
     );
 };

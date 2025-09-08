@@ -9,14 +9,15 @@ type Props = {
     filterDate?: (date: Date) => boolean;
     minDate?: Date;
     maxDate?: Date;
+    showToday?: boolean;
 };
 
 const DateCell = (props: Props) => {
-    const { date, filterDate, minDate, maxDate } = props;
+    const { date, filterDate, minDate, maxDate, showToday } = props;
 
     const { setSelectedDate, onChange, selectedDate } = useCalendarContext();
 
-    const { isMaxDate, isMinDate } = useCalendar(date);
+    const { isMaxDate, isMinDate, isToday } = useCalendar(date);
 
     const handleDateClick = () => {
         setSelectedDate(date);
@@ -26,11 +27,12 @@ const DateCell = (props: Props) => {
     const isSelected = date.toDateString() === selectedDate.toDateString();
     const disabledByFilter = filterDate ? filterDate(date) : false;
     const disabled = disabledByFilter || isMaxDate(maxDate) || isMinDate(minDate);
+    const addTodayStyles = showToday ? isToday() : false;
 
     return (
         <button
             onClick={handleDateClick}
-            className={datecell({ selected: isSelected, disabled: disabled })}
+            className={datecell({ selected: isSelected, disabled: disabled, isToday: addTodayStyles })}
             disabled={disabled}
             aria-label={date.toDateString()}
         >

@@ -39,5 +39,15 @@ export const useCalendar = (date: Date) => {
         return maxDate ? date > maxDate : false;
     };
 
-    return { goToPrevMonth, goToNextMonth, generateDates, isMaxDate, isMinDate };
+    const isToday = () => {
+        const today = new Date();
+        const matchToday =
+            date.getFullYear() === today.getFullYear() &&
+            date.getMonth() === today.getMonth() &&
+            date.getDate() === today.getDate();
+
+        return matchToday;
+    };
+
+    return { goToPrevMonth, goToNextMonth, generateDates, isMaxDate, isMinDate, isToday };
 };

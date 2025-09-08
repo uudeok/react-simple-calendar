@@ -1,37 +1,49 @@
-export type CellRenderer = (date: Date) => { disabled: boolean };
+export interface DateData {
+    date: Date;
+    isToday: boolean;
+    isWeekend: boolean;
+    isBlocked: boolean; // disabled
+    customStyles?: string[];
+}
 
-export const baseCellRenderer = (date: Date) => ({ disabled: false });
+export type DateProcessor = (data: DateData) => DateData;
 
-// minDate 데코레이터
-export const withMinDate = (renderer: CellRenderer, minDate?: Date): CellRenderer => {
-    return (date: Date) => {
-        const base = renderer(date);
-        const disabled = base.disabled || (minDate ? date < minDate : false);
-        return { disabled };
-    };
+export const addIsWeekend: DateProcessor = (data: DateData) => {
+    const day = data.date.getDay();
+    const isWeekend = day === 0 || day === 6; // 0은 일요일, 6은 토요일
+
+    return { ...data, isWeekend, isBlocked: isWeekend };
 };
 
-// maxDate 데코레이터
-export const withMaxDate = (renderer: CellRenderer, maxDate?: Date): CellRenderer => {
-    return (date: Date) => {
-        const base = renderer(date);
-        const disabled = base.disabled || (maxDate ? date > maxDate : false);
-        return { disabled };
-    };
+export const addIsToday: DateProcessor = (data: DateData) => {
+    const today = new Date();
+    const isToday =
+        data.date.getFullYear() === today.getFullYear() &&
+        data.date.getMonth() === today.getMonth() &&
+        data.date.getDate() === today.getDate();
+    return { ...data, isToday };
 };
 
-// filterDate 데코레이터
-export const withFilterDate = (renderer: CellRenderer, filterDate?: (date: Date) => boolean): CellRenderer => {
-    return (date: Date) => {
-        const base = renderer(date);
-        const disabled = base.disabled || (filterDate ? filterDate(date) : false);
-        return { disabled };
-    };
+export const addBlockedDate = (data: DateData, condition: (date: Date) => boolean): DateData => {
+    if (condition(data.date)) {
+        return { ...data, isBlocked: true };
+    }
+    return data;
 };
 
-export const pipeCellRenderers = (
-    baseRenderer: CellRenderer,
-    funcs: ((renderer: CellRenderer) => CellRenderer)[]
-): CellRenderer => {
-    return funcs.reduce((prev, fn) => fn(prev), baseRenderer);
-};
+export const pipe =
+    (...fns: DateProcessor[]) =>
+    (initial: DateData) =>
+        fns.reduce((cur, func) => func(cur), initial);
+
+export const myDateProcessor = pipe(
+    addIsToday, // 현재 날짜 여부 추가
+    addIsWeekend // 주말 여부 추가 및 차단
+);
+
+export const result5 = myDateProcessor({
+    isBlocked: false,
+    isToday: false,
+    isWeekend: false,
+    date: new Date(),
+});

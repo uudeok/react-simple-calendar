@@ -22,6 +22,7 @@ export const datecell = recipe({
             true: {
                 background: theme.colors.hightlight,
                 color: theme.colors.white,
+                border: 'none',
             },
             false: {
                 background: 'transparent',
@@ -33,7 +34,23 @@ export const datecell = recipe({
                 cursor: 'not-allowed',
                 color: theme.colors.gray,
             },
-            false: {}, // 기본값은 그대로
+            false: {},
+        },
+        isToday: {
+            true: {
+                border: `1px dashed ${theme.colors.grayLight}`,
+            },
         },
     },
+    compoundVariants: [
+        {
+            variants: {
+                selected: true,
+                isToday: true,
+            },
+            style: {
+                border: 'none', // 오늘 + 선택된 경우 border 제거
+            },
+        },
+    ],
 });
