@@ -1,46 +1,35 @@
-import useCalendarContext from '../contexts/CaneldarContext';
-
-export const DISPLAY_DYAS = 42;
+import { getMonth, getYear } from '../utils/date';
 
 export const useCalendar = () => {
-    const { selectedDate } = useCalendarContext();
+    const goToPrevMonth = (date: Date) => {
+        const prev = new Date(date);
+        prev.setMonth(prev.getMonth() - 1);
+        return prev;
+    };
+
+    const goToNextMonth = (date: Date) => {
+        const next = new Date(date);
+        next.setMonth(next.getMonth() + 1);
+        return next;
+    };
+
+    const generateDates = (date: Date, totalCells: number) => {
+        const year = getYear(date);
+        const month = getMonth(date);
+
+        const firstDateOfMonth = new Date(year, month, 1); // 현재 월의 1일
+        const firstWeekdayOfMonth = firstDateOfMonth.getDay(); // 현재 월의 1일 요일
+
+        const startDate = new Date(year, month, 1 - firstWeekdayOfMonth);
+
+        const dates: Date[] = Array.from({ length: totalCells }, (_, i) => {
+            const start = new Date(startDate);
+            start.setDate(startDate.getDate() + i);
+            return start;
+        });
+
+        return dates;
+    };
+
+    return { goToPrevMonth, goToNextMonth, generateDates };
 };
-
-// import { useState } from 'react';
-
-// export const DISPLAY_DYAS = 42;
-
-// export const useCalendar = (initialDate?: Date) => {
-//     const [currentDate, setCurrentDate] = useState<Date>(initialDate || new Date());
-
-//     const goToPrevMonth = () => {
-//         const prev = new Date(currentDate);
-//         prev.setMonth(prev.getMonth() - 1);
-//         setCurrentDate(prev);
-//     };
-
-//     const goToNextMonth = () => {
-//         const next = new Date(currentDate);
-//         next.setMonth(next.getMonth() + 1);
-//         setCurrentDate(next);
-//     };
-
-//     const renderDate = () => {
-//         const year = currentDate.getFullYear();
-//         const month = currentDate.getMonth();
-
-//         const firstDayOfMonth = new Date(year, month, 1);
-//         const startDay = firstDayOfMonth.getDay();
-//         const startDate = new Date(year, month, 1 - startDay);
-
-//         const days: Date[] = Array.from({ length: DISPLAY_DYAS }, (_, i) => {
-//             const start = new Date(startDate);
-//             start.setDate(startDate.getDate() + i);
-//             return start;
-//         });
-
-//         console.log(days);
-//     };
-
-//     return { currentDate, goToPrevMonth, goToNextMonth, renderDate };
-// };

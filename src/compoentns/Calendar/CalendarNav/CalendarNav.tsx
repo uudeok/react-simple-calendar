@@ -1,5 +1,6 @@
 import useCalendarContext from '../../../contexts/CaneldarContext';
-import { getDisplayMonth, getYear, goToNextMonth, goToPrevMonth } from '../../../utils/date';
+import { useCalendar } from '../../../hooks/useCalendar';
+import { getDisplayMonth, getYear } from '../../../utils/date';
 
 import NavButton from '../../common/Button/NavButton';
 import type { CalendarOptional } from '../Calendar';
@@ -11,6 +12,8 @@ const CalendarNav = (props: CalendarNavProps) => {
     const { customNextButton, customPrevButton } = props;
 
     const { selectedDate, setSelectedDate } = useCalendarContext();
+
+    const { goToNextMonth, goToPrevMonth } = useCalendar();
 
     const year = getYear(selectedDate);
     const month = getDisplayMonth(selectedDate);

@@ -1,11 +1,13 @@
 import { CALENDAR_TOTAL_CELLS } from '../../../constants';
 import useCalendarContext from '../../../contexts/CaneldarContext';
-import { generateDates } from '../../../utils/date';
+import { useCalendar } from '../../../hooks/useCalendar';
 import { DateCell } from '../DateCell/DateCell';
 import { grid } from './style.css';
 
 const DateGrid = () => {
     const { selectedDate } = useCalendarContext();
+
+    const { generateDates } = useCalendar();
 
     const dates = generateDates(selectedDate, CALENDAR_TOTAL_CELLS);
 

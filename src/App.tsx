@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Calendar } from './compoentns/Calendar/Calendar';
+import Test from './compoentns/Test';
 
 function App() {
     const [date1, setDate1] = useState(new Date());
@@ -25,8 +26,18 @@ function App() {
                 onChange={handleDate2}
                 customWeek={['SUN', 'MON', 'TUE', 'WED', 'THR', 'FRI', 'SAT']}
             />
+            <Test />
         </div>
     );
 }
 
 export default App;
+
+/**
+ *
+ * <Calendar
+ *    plugin=[
+ *
+ *    ]
+ *
+ */
