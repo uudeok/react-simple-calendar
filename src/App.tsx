@@ -3,7 +3,7 @@ import { Calendar } from './compoentns/Calendar/Calendar';
 
 function App() {
     const [date1, setDate1] = useState(new Date());
-    const [date2, setDate2] = useState(new Date(2026, 2, 16));
+    const [date2, setDate2] = useState(new Date(2025, 8, 16));
 
     const handleDate1 = (date: Date) => {
         setDate1(date);
@@ -36,3 +36,9 @@ function App() {
 }
 
 export default App;
+
+/**
+ * 오늘 Today 표시하는거랑
+ * 달력위에 Hover 했을때 효과 주는거 + 배경색 + 폰트 컬러 커스텀
+ * 특정 날짜에 highlihgt 주는거
+ */

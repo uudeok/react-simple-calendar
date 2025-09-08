@@ -2,18 +2,21 @@ import { memo } from 'react';
 import useCalendarContext from '../../../contexts/CaneldarContext';
 import { getDate } from '../../../utils/date';
 import { datecell } from './style.css';
+import { useCalendar } from '../../../hooks/useCalendar';
 
 type Props = {
     date: Date;
     filterDate?: (date: Date) => boolean;
-    isBeforeMinDate: (date: Date) => boolean;
-    isAfterMaxDate: (date: Date) => boolean;
+    minDate?: Date;
+    maxDate?: Date;
 };
 
 const DateCell = (props: Props) => {
-    const { date, filterDate, isBeforeMinDate, isAfterMaxDate } = props;
+    const { date, filterDate, minDate, maxDate } = props;
 
     const { setSelectedDate, onChange, selectedDate } = useCalendarContext();
+
+    const { isMaxDate, isMinDate } = useCalendar(date);
 
     const handleDateClick = () => {
         setSelectedDate(date);
@@ -22,7 +25,7 @@ const DateCell = (props: Props) => {
 
     const isSelected = date.toDateString() === selectedDate.toDateString();
     const disabledByFilter = filterDate ? filterDate(date) : false;
-    const disabled = disabledByFilter || isBeforeMinDate(date) || isAfterMaxDate(date);
+    const disabled = disabledByFilter || isMaxDate(maxDate) || isMinDate(minDate);
 
     return (
         <button

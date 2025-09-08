@@ -31,5 +31,13 @@ export const useCalendar = (date: Date) => {
         return dates;
     };
 
-    return { goToPrevMonth, goToNextMonth, generateDates };
+    const isMinDate = (minDate?: Date) => {
+        return minDate ? date < minDate : false;
+    };
+
+    const isMaxDate = (maxDate?: Date) => {
+        return maxDate ? date > maxDate : false;
+    };
+
+    return { goToPrevMonth, goToNextMonth, generateDates, isMaxDate, isMinDate };
 };

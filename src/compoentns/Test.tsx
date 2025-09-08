@@ -1,61 +1,37 @@
-const HOLIDAYS = [new Date(2025, 11, 25), new Date(2025, 8, 15)];
+export type CellRenderer = (date: Date) => { disabled: boolean };
 
-export type CalendarPlugin = {
-    // 날짜 셀 스타일링
-    getDayStyle?: (date: Date) => React.CSSProperties | undefined;
-    // hover 이벤트
-    onDayHover?: (date: Date) => React.CSSProperties | undefined;
-    // holiday 설정
-    onHoliday?: (dates: Date[], style?: React.CSSProperties) => React.CSSProperties | undefined;
+export const baseCellRenderer = (date: Date) => ({ disabled: false });
+
+// minDate 데코레이터
+export const withMinDate = (renderer: CellRenderer, minDate?: Date): CellRenderer => {
+    return (date: Date) => {
+        const base = renderer(date);
+        const disabled = base.disabled || (minDate ? date < minDate : false);
+        return { disabled };
+    };
 };
 
-type DayDecorateResult = {
-    style: React.CSSProperties;
-    onMouseEnter?: () => void;
+// maxDate 데코레이터
+export const withMaxDate = (renderer: CellRenderer, maxDate?: Date): CellRenderer => {
+    return (date: Date) => {
+        const base = renderer(date);
+        const disabled = base.disabled || (maxDate ? date > maxDate : false);
+        return { disabled };
+    };
 };
 
-const Test = () => {
-    const pipeCalendarPlugins =
-        (plugins: CalendarPlugin[]) =>
-        (date: Date): DayDecorateResult => {
-            return plugins.reduce(
-                (acc, plugin) => {
-                    const styleFromDay = plugin.getDayStyle?.(date) || {};
-
-                    const styleFromHoliday = plugin.onHoliday?.([], {}) || {}; // placeholder, 실제 사용 시 날짜 배열과 스타일 전달
-
-                    const hoverHandler = plugin.onDayHover ? () => plugin.onDayHover?.(date) : undefined;
-
-                    return {
-                        style: { ...acc.style, ...styleFromDay, ...styleFromHoliday },
-                        onMouseEnter: hoverHandler || acc.onMouseEnter,
-                    };
-                },
-                { style: {} } as DayDecorateResult
-            );
-        };
-
-    const decorate = pipeCalendarPlugins([
-        {
-            onHoliday: (dates, style) => (date: Date) =>
-                dates.some((d) => d.toDateString() === date.toDateString()) ? style : undefined,
-        },
-        {
-            getDayStyle: () => ({ backgroundColor: '#f9fafb', color: 'orange' }),
-        },
-        {
-            onDayHover: () => ({ backgroundColor: '#111827', color: '#f9fafb' }),
-        },
-    ]);
-
-    const dayStyle = decorate(new Date(2025, 8, 15)).style;
-    console.log(dayStyle);
-
-    return (
-        <div>
-            <div></div>
-        </div>
-    );
+// filterDate 데코레이터
+export const withFilterDate = (renderer: CellRenderer, filterDate?: (date: Date) => boolean): CellRenderer => {
+    return (date: Date) => {
+        const base = renderer(date);
+        const disabled = base.disabled || (filterDate ? filterDate(date) : false);
+        return { disabled };
+    };
 };
 
-export default Test;
+export const pipeCellRenderers = (
+    baseRenderer: CellRenderer,
+    funcs: ((renderer: CellRenderer) => CellRenderer)[]
+): CellRenderer => {
+    return funcs.reduce((prev, fn) => fn(prev), baseRenderer);
+};

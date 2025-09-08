@@ -10,4 +10,5 @@ export const calendarRoot = style({
     borderRadius: '12px',
     background: theme.colors.shadeLightest,
     color: theme.colors.textPrimary,
+    boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
 });

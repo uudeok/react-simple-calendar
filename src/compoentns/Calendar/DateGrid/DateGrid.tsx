@@ -19,26 +19,10 @@ const DateGrid = (props: DateGridProps) => {
 
     const dates = generateDates(CALENDAR_TOTAL_CELLS);
 
-    const isBeforeMinDate = (date: Date) => {
-        if (!minDate) return false;
-        return date < minDate;
-    };
-
-    const isAfterMaxDate = (date: Date) => {
-        if (!maxDate) return false;
-        return maxDate < date;
-    };
-
     return (
         <div className={grid}>
             {dates.map((date, idx) => (
-                <DateCell
-                    key={idx}
-                    date={date}
-                    filterDate={filterDate}
-                    isBeforeMinDate={isBeforeMinDate}
-                    isAfterMaxDate={isAfterMaxDate}
-                />
+                <DateCell key={idx} date={date} filterDate={filterDate} minDate={minDate} maxDate={maxDate} />
             ))}
         </div>
     );
