@@ -12,6 +12,7 @@ export interface CalendarOptional {
     locale?: LocaleType;
     customPrevButton?: React.ReactNode;
     customNextButton?: React.ReactNode;
+    customWeek?: string[];
 }
 
 export type CalendarProps = CalendarRequired & CalendarOptional;
