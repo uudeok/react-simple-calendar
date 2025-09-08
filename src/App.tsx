@@ -23,7 +23,7 @@ function App() {
                 locale="ko"
                 date={date2}
                 onChange={handleDate2}
-                customWeek={['SUN', 'MON', 'TUE', 'WED', 'THR', 'FRI', '2']}
+                customWeek={['SUN', 'MON', 'TUE', 'WED', 'THR', 'FRI', 'SAT']}
             />
         </div>
     );

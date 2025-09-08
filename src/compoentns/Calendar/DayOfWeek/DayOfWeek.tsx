@@ -12,14 +12,7 @@ type DayOfWeekProps = {
 const DayOfWeek = (props: DayOfWeekProps) => {
     const { customWeek, locale = 'ko' } = props;
 
-    let weeks: string[];
-
-    if (customWeek) {
-        WeekValidator.validate(customWeek);
-        weeks = customWeek;
-    } else {
-        weeks = WEEK[locale];
-    }
+    const weeks = customWeek && WeekValidator.validate(customWeek) ? customWeek : WEEK[locale];
 
     return (
         <div className={layout}>
