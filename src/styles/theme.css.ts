@@ -1,5 +1,14 @@
 import { createTheme, createThemeContract } from '@vanilla-extract/css';
 
+export const customThemeVars = createThemeContract({
+    background: null,
+    color: null,
+    hoverBg: null,
+    hoverColor: null,
+    selectedBg: null,
+    selectedColor: null,
+});
+
 export const theme = createThemeContract({
     colors: {
         shadeLightest: null,

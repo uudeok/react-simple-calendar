@@ -9,10 +9,11 @@ type DateGridProps = {
     minDate?: Date;
     maxDate?: Date;
     showToday?: boolean;
+    onChange: (date: Date) => void;
 };
 
 const DateGrid = (props: DateGridProps) => {
-    const { filterDate, minDate, maxDate, showToday } = props;
+    const { filterDate, minDate, maxDate, showToday, onChange } = props;
 
     const { selectedDate } = useCalendarContext();
 
@@ -30,6 +31,7 @@ const DateGrid = (props: DateGridProps) => {
                     minDate={minDate}
                     maxDate={maxDate}
                     showToday={showToday}
+                    onChange={onChange}
                 />
             ))}
         </div>

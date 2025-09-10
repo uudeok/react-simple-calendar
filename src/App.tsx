@@ -22,7 +22,20 @@ function App() {
 
     return (
         <div style={{ display: 'flex', gap: '50px', width: '860px', margin: 'auto' }}>
-            <Calendar date={date1} onChange={handleDate1} minDate={new Date(2025, 8, 1)} showToday />
+            <Calendar
+                date={date1}
+                onChange={handleDate1}
+                minDate={new Date(2025, 8, 1)}
+                showToday
+                customTheme={{
+                    background: 'orange',
+                    color: 'white',
+                    hoverBg: 'red',
+                    selectedBg: 'red',
+                    hoverColor: 'orange',
+                    selectedColor: 'white',
+                }}
+            />
             <Calendar
                 date={date2}
                 onChange={handleDate2}
@@ -39,10 +52,7 @@ function App() {
 export default App;
 
 /**
- * 오늘 Today 표시하는거랑
- * 달력위에 Hover 했을때 효과 주는거 + 배경색 + 폰트 컬러 커스텀
- * 특정 날짜에 highlihgt 주는거
- * 
+
  * 
  *      highlight={[
         { date: "2023-08-15", name : "India's Independence Day" },

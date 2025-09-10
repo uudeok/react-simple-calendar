@@ -1,11 +1,14 @@
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { THEME } from '../../constants';
-import { darkTheme, lightTheme } from '../../styles/theme.css';
+import useCalendarContext from '../../contexts/CaneldarContext';
+import { customThemeVars, darkTheme, lightTheme } from '../../styles/theme.css';
 import { typographyTheme } from '../../styles/typography.css';
-import type { CalendarOptional } from './Calendar';
+import type { CalendarOptional, CalendarRequired } from '../../types';
 import { calendarRoot } from './Calendar.css';
 import CalendarNav from './CalendarNav/CalendarNav';
 import DateGrid from './DateGrid/DateGrid';
 import DayOfWeek from './DayOfWeek/DayOfWeek';
+import { theme as globalTheme } from '../../styles/theme.css';
 
 const CalendarContent = ({
     theme,
@@ -17,16 +20,33 @@ const CalendarContent = ({
     minDate,
     maxDate,
     showToday,
-}: CalendarOptional) => {
+    onChange,
+}: CalendarOptional & Pick<CalendarRequired, 'onChange'>) => {
+    const { customTheme } = useCalendarContext();
+
     const themeClass = theme === THEME.DARK ? darkTheme : lightTheme;
 
     return (
-        <div className={`${calendarRoot} ${themeClass} ${typographyTheme}`}>
+        <div
+            className={`${calendarRoot} ${themeClass} ${typographyTheme}`}
+            style={assignInlineVars({
+                [customThemeVars.background]: customTheme?.background ?? globalTheme.colors.shadeLightest,
+                [customThemeVars.color]: customTheme?.color,
+            })}
+        >
             <CalendarNav customPrevButton={customPrevButton} customNextButton={customNextButton} />
-            <DayOfWeek locale={locale} customWeek={customWeek} />
-            <DateGrid filterDate={filterDate} minDate={minDate} maxDate={maxDate} showToday={showToday} />
+            <DayOfWeek customWeek={customWeek} locale={locale} />
+            <DateGrid
+                filterDate={filterDate}
+                minDate={minDate}
+                maxDate={maxDate}
+                showToday={showToday}
+                onChange={onChange}
+            />
         </div>
     );
 };
 
 export default CalendarContent;
+
+/** Vanilla extract 는 빌드시에 전환되어서 런타임때 동적으로 뭐가 어려워 */

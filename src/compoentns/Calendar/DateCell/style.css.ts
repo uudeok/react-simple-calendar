@@ -1,4 +1,4 @@
-import { theme } from '../../../styles/theme.css';
+import { customThemeVars, theme } from '../../../styles/theme.css';
 import { typography } from '../../../styles/typography.css';
 import { recipe } from '@vanilla-extract/recipes';
 
@@ -16,12 +16,19 @@ export const datecell = recipe({
         color: theme.colors.textPrimary,
         fontSize: typography.fontSize.text,
         transition: 'background 0.2s, color 0.2s',
+
+        selectors: {
+            '&:hover:not([disabled])': {
+                background: customThemeVars.hoverBg,
+                color: customThemeVars.hoverColor,
+            },
+        },
     },
     variants: {
         selected: {
             true: {
-                background: theme.colors.hightlight,
-                color: theme.colors.white,
+                background: customThemeVars.selectedBg,
+                color: customThemeVars.selectedColor,
                 border: 'none',
             },
             false: {

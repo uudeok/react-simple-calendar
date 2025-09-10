@@ -1,5 +1,7 @@
 import { getMonth, getYear } from '../utils/date';
 
+const today = new Date();
+
 export const useCalendar = (date: Date) => {
     const goToPrevMonth = () => {
         const prev = new Date(date);
@@ -40,11 +42,12 @@ export const useCalendar = (date: Date) => {
     };
 
     const isToday = () => {
-        const today = new Date();
-        const matchToday =
-            date.getFullYear() === today.getFullYear() &&
-            date.getMonth() === today.getMonth() &&
-            date.getDate() === today.getDate();
+        const matchMonth = date.getMonth() !== today.getMonth();
+        const matchYear = date.getFullYear() !== today.getFullYear();
+
+        if (matchMonth || matchYear) return false;
+
+        const matchToday = date.getDate() === today.getDate();
 
         return matchToday;
     };

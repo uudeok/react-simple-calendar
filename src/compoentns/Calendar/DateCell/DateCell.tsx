@@ -3,6 +3,8 @@ import useCalendarContext from '../../../contexts/CaneldarContext';
 import { getDate } from '../../../utils/date';
 import { datecell } from './style.css';
 import { useCalendar } from '../../../hooks/useCalendar';
+import { assignInlineVars } from '@vanilla-extract/dynamic';
+import { customThemeVars, theme } from '../../../styles/theme.css';
 
 type Props = {
     date: Date;
@@ -10,12 +12,13 @@ type Props = {
     minDate?: Date;
     maxDate?: Date;
     showToday?: boolean;
+    onChange: (date: Date) => void;
 };
 
 const DateCell = (props: Props) => {
-    const { date, filterDate, minDate, maxDate, showToday } = props;
+    const { date, filterDate, minDate, maxDate, showToday, onChange } = props;
 
-    const { setSelectedDate, onChange, selectedDate } = useCalendarContext();
+    const { setSelectedDate, selectedDate, customTheme } = useCalendarContext();
 
     const { isMaxDate, isMinDate, isToday } = useCalendar(date);
 
@@ -32,6 +35,12 @@ const DateCell = (props: Props) => {
     return (
         <button
             onClick={handleDateClick}
+            style={assignInlineVars({
+                [customThemeVars.hoverBg]: customTheme?.hoverBg ?? theme.colors.shadeLight,
+                [customThemeVars.hoverColor]: customTheme?.hoverColor ?? theme.colors.textPrimary,
+                [customThemeVars.selectedBg]: customTheme?.selectedBg ?? theme.colors.hightlight,
+                [customThemeVars.selectedColor]: customTheme?.selectedColor ?? theme.colors.white,
+            })}
             className={datecell({ selected: isSelected, disabled: disabled, isToday: addTodayStyles })}
             disabled={disabled}
             aria-label={date.toDateString()}
