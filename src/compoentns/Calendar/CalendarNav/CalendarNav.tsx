@@ -10,9 +10,7 @@ import { customThemeVars, theme } from '../../../styles/theme.css';
 
 type CalendarNavProps = Pick<CalendarOptional, 'customNextButton' | 'customPrevButton'>;
 
-const CalendarNav = (props: CalendarNavProps) => {
-    const { customNextButton, customPrevButton } = props;
-
+const CalendarNav = ({ customNextButton, customPrevButton }: CalendarNavProps) => {
     const { selectedDate, setSelectedDate, customTheme } = useCalendarContext();
 
     const { goToNextMonth, goToPrevMonth } = useCalendar(selectedDate);

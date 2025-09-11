@@ -1,7 +1,6 @@
 import { assignInlineVars } from '@vanilla-extract/dynamic';
-import { THEME } from '../../constants';
 import useCalendarContext from '../../contexts/CaneldarContext';
-import { customThemeVars, darkTheme, lightTheme } from '../../styles/theme.css';
+import { customThemeVars } from '../../styles/theme.css';
 import { typographyTheme } from '../../styles/typography.css';
 import type { CalendarOptional, CalendarRequired } from '../../types';
 import { calendarRoot } from './Calendar.css';
@@ -9,9 +8,9 @@ import CalendarNav from './CalendarNav/CalendarNav';
 import DateGrid from './DateGrid/DateGrid';
 import DayOfWeek from './DayOfWeek/DayOfWeek';
 import { theme as globalTheme } from '../../styles/theme.css';
+import useThemeContext from '../../contexts/ThemeContext';
 
 const CalendarContent = ({
-    theme,
     locale,
     customPrevButton,
     customNextButton,
@@ -23,8 +22,7 @@ const CalendarContent = ({
     onChange,
 }: CalendarOptional & Pick<CalendarRequired, 'onChange'>) => {
     const { customTheme } = useCalendarContext();
-
-    const themeClass = theme === THEME.DARK ? darkTheme : lightTheme;
+    const { themeClass } = useThemeContext();
 
     return (
         <div
