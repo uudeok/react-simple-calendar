@@ -5,6 +5,8 @@ export type LocaleType = ValueOf<typeof LOCALE>;
 
 export type ThemeType = ValueOf<typeof THEME>;
 
+export type WeekStart = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+
 export interface CalendarRequired {
     date: Date;
     onChange: (date: Date) => void;
@@ -22,6 +24,7 @@ export interface CalendarOptional {
     showToday?: boolean;
     customTheme?: CustomTheme;
     formatDate?: FormatType;
+    startOfWeek?: WeekStart;
 }
 
 export interface CustomTheme {

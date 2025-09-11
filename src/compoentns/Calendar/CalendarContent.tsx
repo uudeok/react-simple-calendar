@@ -21,6 +21,7 @@ const CalendarContent = ({
     showToday,
     onChange,
     formatDate,
+    startOfWeek,
 }: CalendarOptional & Pick<CalendarRequired, 'onChange'>) => {
     const { customTheme } = useCalendarContext();
     const { themeClass } = useThemeContext();
@@ -38,13 +39,14 @@ const CalendarContent = ({
                 customNextButton={customNextButton}
                 formatDate={formatDate}
             />
-            <DayOfWeek customWeek={customWeek} locale={locale} />
+            <DayOfWeek customWeek={customWeek} locale={locale} startOfWeek={startOfWeek} />
             <DateGrid
                 filterDate={filterDate}
                 minDate={minDate}
                 maxDate={maxDate}
                 showToday={showToday}
                 onChange={onChange}
+                startOfWeek={startOfWeek}
             />
         </div>
     );

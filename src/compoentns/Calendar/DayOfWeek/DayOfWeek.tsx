@@ -1,23 +1,26 @@
 import { memo } from 'react';
 import { WEEK } from '../../../constants';
 import { layout } from './style.css';
-import type { LocaleType } from '../../../types';
+import type { LocaleType, WeekStart } from '../../../types';
 import { WeekValidator } from '../../../validators';
-import { validateOrFallback } from '../../../utils/validator/validatorHelper';
+import { validateWithFallback } from '../../../utils/validator/validatorHelper';
 
 type DayOfWeekProps = {
     customWeek?: string[];
     locale?: LocaleType;
+    startOfWeek?: WeekStart;
 };
 
 const DayOfWeek = (props: DayOfWeekProps) => {
-    const { customWeek, locale = 'ko' } = props;
+    const { customWeek, locale = 'ko', startOfWeek = 0 } = props;
 
-    const weeks = validateOrFallback(customWeek, WeekValidator, WEEK[locale]);
+    const weeks = validateWithFallback(customWeek, WeekValidator, WEEK[locale]);
+
+    const rotatedWeeks = [...weeks.slice(startOfWeek), ...weeks.slice(0, startOfWeek)];
 
     return (
         <div className={layout}>
-            {weeks.map((week) => (
+            {rotatedWeeks.map((week) => (
                 <span key={week}>{week}</span>
             ))}
         </div>

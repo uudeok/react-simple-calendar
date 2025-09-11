@@ -1,6 +1,7 @@
 import { CALENDAR_TOTAL_CELLS } from '../../../constants';
 import useCalendarContext from '../../../contexts/CaneldarContext';
 import { useCalendar } from '../../../hooks/useCalendar';
+import type { WeekStart } from '../../../types';
 import DateCell from '../DateCell/DateCell';
 import { grid } from './style.css';
 
@@ -10,16 +11,17 @@ type DateGridProps = {
     maxDate?: Date;
     showToday?: boolean;
     onChange: (date: Date) => void;
+    startOfWeek?: WeekStart;
 };
 
 const DateGrid = (props: DateGridProps) => {
-    const { filterDate, minDate, maxDate, showToday, onChange } = props;
+    const { filterDate, minDate, maxDate, showToday, onChange, startOfWeek } = props;
 
     const { selectedDate } = useCalendarContext();
 
     const { generateDates } = useCalendar(selectedDate);
 
-    const dates = generateDates(CALENDAR_TOTAL_CELLS);
+    const dates = generateDates(CALENDAR_TOTAL_CELLS, startOfWeek);
 
     return (
         <div className={grid}>

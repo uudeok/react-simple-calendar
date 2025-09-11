@@ -1,6 +1,6 @@
 import type { Validator } from '../../validators/Validator';
 
-export const validateOrFallback = <T>(value: T | undefined, validator: Validator<T>, fallback: T): T => {
+export const validateWithFallback = <T>(value: T | undefined, validator: Validator<T>, fallback: T): T => {
     if (!value) return fallback;
 
     const result = validator.validate(value);

@@ -22,7 +22,16 @@ function App() {
 
     return (
         <div style={{ display: 'flex', gap: '50px', width: '800px', margin: 'auto' }}>
-            <Calendar date={date1} onChange={handleDate1} minDate={new Date(2025, 8, 1)} showToday />
+            <Calendar
+                date={date1}
+                onChange={handleDate1}
+                minDate={new Date(2025, 8, 1)}
+                showToday
+                customTheme={{
+                    highlightBg: 'skyblue',
+                }}
+                startOfWeek={3}
+            />
             <Calendar
                 date={date2}
                 onChange={handleDate2}
@@ -32,6 +41,7 @@ function App() {
                 filterDate={isWeekday}
                 showToday
                 formatDate="MMMM yyyy"
+                startOfWeek={1}
             />
         </div>
     );
