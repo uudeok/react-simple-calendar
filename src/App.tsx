@@ -31,6 +31,7 @@ function App() {
                 customWeek={['SUN', 'MON', 'TUE', 'WED', 'THR', 'FRI', 'SAT']}
                 filterDate={isWeekday}
                 showToday
+                formatDate="MMMM yyyy"
             />
         </div>
     );

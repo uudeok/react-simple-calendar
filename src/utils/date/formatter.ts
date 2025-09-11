@@ -1,4 +1,4 @@
-import type { FormatDateType } from '../../types/date';
+import type { FormatType } from '../../types/date';
 import { getMonth, getYear } from './getter';
 
 export const getDisplayMonth = (date: Date): string => {
@@ -11,7 +11,7 @@ export const getDisplayDate = (date: Date): string => {
     return newDate.toString().padStart(2, '0');
 };
 
-export const formatDate = (date: Date, format: FormatDateType) => {
+export const formatDate = (date: Date, format: FormatType) => {
     const year = getYear(date);
     const month = getDisplayMonth(date);
     const day = getDisplayDate(date);

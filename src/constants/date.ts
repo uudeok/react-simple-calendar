@@ -1,6 +1,14 @@
 export const FORMAT_DATE = {
-    YMD: 'YYYY-MM-DD',
-    YMD_DOT: 'YYYY.MM.DD',
-    MDY_SLASH: 'MM/DD/YYYY',
-    DMY_DOT: 'DD.MM.YYYY',
+    'yyyy/MM': 'yyyy/MM',
+    'yyyy.MM': 'yyyy.MM',
+    'MMMM yyyy': 'MMMM yyyy',
+    'MMM yyyy': 'MMM yyyy',
 } as const;
+
+/**
+ * 2025/09
+ * 2025.09
+ * September 2025
+ * Sep 2025
+
+ */

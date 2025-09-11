@@ -1,4 +1,4 @@
-import type { ValueOf } from '.';
+import type { FormatType, ValueOf } from '.';
 import type { LOCALE, THEME } from '../constants';
 
 export type LocaleType = ValueOf<typeof LOCALE>;
@@ -21,6 +21,7 @@ export interface CalendarOptional {
     maxDate?: Date;
     showToday?: boolean;
     customTheme?: CustomTheme;
+    formatDate?: FormatType;
 }
 
 export interface CustomTheme {
