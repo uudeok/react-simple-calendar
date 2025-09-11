@@ -1,17 +1,19 @@
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import useCalendarContext from '../../../contexts/CaneldarContext';
 import { useCalendar } from '../../../hooks/useCalendar';
+import type { CalendarOptional } from '../../../types';
 import { getDisplayMonth, getYear } from '../../../utils/date';
 
 import NavButton from '../../common/Button/NavButton';
-import type { CalendarOptional } from '../Calendar';
 import { layout, monthLabel, navGroup } from './style.css';
+import { customThemeVars, theme } from '../../../styles/theme.css';
 
 type CalendarNavProps = Pick<CalendarOptional, 'customNextButton' | 'customPrevButton'>;
 
 const CalendarNav = (props: CalendarNavProps) => {
     const { customNextButton, customPrevButton } = props;
 
-    const { selectedDate, setSelectedDate } = useCalendarContext();
+    const { selectedDate, setSelectedDate, customTheme } = useCalendarContext();
 
     const { goToNextMonth, goToPrevMonth } = useCalendar(selectedDate);
 
@@ -30,7 +32,12 @@ const CalendarNav = (props: CalendarNavProps) => {
 
     return (
         <div className={layout}>
-            <div className={monthLabel}>
+            <div
+                className={monthLabel}
+                style={assignInlineVars({
+                    [customThemeVars.color]: customTheme?.color ?? theme.colors.textPrimary,
+                })}
+            >
                 <span>
                     {year}.{month}
                 </span>

@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { theme } from '../../../styles/theme.css';
+import { customThemeVars } from '../../../styles/theme.css';
 import { typography } from '../../../styles/typography.css';
 
 export const navButton = style({
@@ -12,7 +12,7 @@ export const navButton = style({
 
     fontSize: typography.fontSize.heading,
     cursor: 'pointer',
-    color: theme.colors.hightlight,
+    color: customThemeVars.highlightBg,
 
     transition: 'all 0.2s',
     fontWeight: typography.fontWeight.semiBold,

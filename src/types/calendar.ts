@@ -26,19 +26,8 @@ export interface CalendarOptional {
 export interface CustomTheme {
     background?: string;
     color?: string;
-    hoverBg?: string;
-    hoverColor?: string;
-    selectedBg?: string;
-    selectedColor?: string;
+    highlightBg?: string;
+    highlightColor?: string;
 }
-
-// export interface CustomTheme {
-//     background?: CSSProperties['background'];
-//     color?: CSSProperties['color'];
-//     hoverBg?: CSSProperties['background'];
-//     hoverColor?: CSSProperties['color'];
-//     selectedBg?: CSSProperties['background'];
-//     selectedColor?: CSSProperties['color'];
-// }
 
 export type CalendarProps = CalendarRequired & CalendarOptional;

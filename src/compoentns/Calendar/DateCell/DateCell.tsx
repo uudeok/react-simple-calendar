@@ -36,10 +36,8 @@ const DateCell = (props: Props) => {
         <button
             onClick={handleDateClick}
             style={assignInlineVars({
-                [customThemeVars.hoverBg]: customTheme?.hoverBg ?? theme.colors.shadeLight,
-                [customThemeVars.hoverColor]: customTheme?.hoverColor ?? theme.colors.textPrimary,
-                [customThemeVars.selectedBg]: customTheme?.selectedBg ?? theme.colors.hightlight,
-                [customThemeVars.selectedColor]: customTheme?.selectedColor ?? theme.colors.white,
+                [customThemeVars.highlightBg]: customTheme?.highlightBg ?? theme.colors.hightlight,
+                [customThemeVars.highlightColor]: customTheme?.highlightColor ?? theme.colors.white,
             })}
             className={datecell({ selected: isSelected, disabled: disabled, isToday: addTodayStyles })}
             disabled={disabled}

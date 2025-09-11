@@ -13,6 +13,5 @@ export const Calendar: React.FC<CalendarProps> = (props: CalendarProps) => {
 };
 
 /**
- * 전역에서 필요한 상태는 Context 로 관리
- * 일부 컴포넌트에서 필요한 상태,로직은 prop 으로 주입
+ theme, locale 은 따로 context 만들기
  */

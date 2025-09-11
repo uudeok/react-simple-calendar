@@ -3,10 +3,8 @@ import { createTheme, createThemeContract } from '@vanilla-extract/css';
 export const customThemeVars = createThemeContract({
     background: null,
     color: null,
-    hoverBg: null,
-    hoverColor: null,
-    selectedBg: null,
-    selectedColor: null,
+    highlightBg: null,
+    highlightColor: null,
 });
 
 export const theme = createThemeContract({

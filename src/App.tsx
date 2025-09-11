@@ -21,21 +21,8 @@ function App() {
     };
 
     return (
-        <div style={{ display: 'flex', gap: '50px', width: '860px', margin: 'auto' }}>
-            <Calendar
-                date={date1}
-                onChange={handleDate1}
-                minDate={new Date(2025, 8, 1)}
-                showToday
-                customTheme={{
-                    background: 'orange',
-                    color: 'white',
-                    hoverBg: 'red',
-                    selectedBg: 'red',
-                    hoverColor: 'orange',
-                    selectedColor: 'white',
-                }}
-            />
+        <div style={{ display: 'flex', gap: '50px', width: '800px', margin: 'auto' }}>
+            <Calendar date={date1} onChange={handleDate1} minDate={new Date(2025, 8, 1)} showToday />
             <Calendar
                 date={date2}
                 onChange={handleDate2}

@@ -5,7 +5,6 @@ import type { CustomTheme } from '../types';
 type Props = {
     initialDate: Date;
     children: ReactNode;
-
     customTheme?: CustomTheme;
 };
 

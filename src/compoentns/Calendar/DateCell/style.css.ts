@@ -19,16 +19,16 @@ export const datecell = recipe({
 
         selectors: {
             '&:hover:not([disabled])': {
-                background: customThemeVars.hoverBg,
-                color: customThemeVars.hoverColor,
+                background: customThemeVars.highlightBg,
+                color: customThemeVars.highlightColor,
             },
         },
     },
     variants: {
         selected: {
             true: {
-                background: customThemeVars.selectedBg,
-                color: customThemeVars.selectedColor,
+                background: customThemeVars.highlightBg,
+                color: customThemeVars.highlightColor,
                 border: 'none',
             },
             false: {
