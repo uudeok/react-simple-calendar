@@ -1,15 +1,15 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
-import path from 'path';
 import dts from 'vite-plugin-dts';
 
 export default defineConfig({
     plugins: [react(), vanillaExtractPlugin(), dts()],
     build: {
         lib: {
-            entry: path.resolve(__dirname, 'src/index.ts'), // 배포 진입점
+            entry: 'src/index.ts',
             name: 'ReactSimpleCalendar', // UMD 빌드 시 전역 이름
+            formats: ['es', 'umd', 'cjs'],
             fileName: (format) => `index.${format}.js`, // 출력 파일 이름
         },
         rollupOptions: {
@@ -21,6 +21,5 @@ export default defineConfig({
                 },
             },
         },
-        sourcemap: true, // 선택 사항: 디버깅용
     },
 });

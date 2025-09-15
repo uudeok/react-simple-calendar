@@ -6,6 +6,13 @@
         "type": "git",
         "url": "git+https://github.com/uudeok/react-simple-calendar"
     },
+    "keywords": [
+        "react",
+        "datepicker",
+        "calendar",
+        "month",
+        "date"
+    ],
     "version": "1.0.5",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
@@ -16,7 +23,7 @@
     },
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
+        "build": "tsc && vite build",
         "prepare": "npm run build",
         "lint": "eslint .",
         "preview": "vite preview"
