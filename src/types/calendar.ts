@@ -1,12 +1,12 @@
 import type { FormatType, ValueOf } from '.';
-import type { LOCALE, THEME } from '../constants';
+import type { LOCALE, THEME, WEEK_START } from '../constants';
 import type { Holidays } from './holiday';
 
 export type LocaleType = ValueOf<typeof LOCALE>;
 
 export type ThemeType = ValueOf<typeof THEME>;
 
-export type WeekStart = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+export type WeekStart = ValueOf<typeof WEEK_START>;
 
 export interface CalendarRequired {
     date: Date;

@@ -30,6 +30,7 @@ function App() {
                 customTheme={{
                     highlightBg: 'skyblue',
                 }}
+                filterDate={isWeekday}
             />
 
             <Calendar

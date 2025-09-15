@@ -9,6 +9,7 @@ import DateGrid from './DateGrid/DateGrid';
 import DayOfWeek from './DayOfWeek/DayOfWeek';
 import { theme as globalTheme } from '../../styles/theme.css';
 import useThemeContext from '../../contexts/ThemeContext';
+import { StartOfWeekValidator } from '../../validators/StartOfWeekValidator';
 
 const CalendarContent = ({
     customPrevButton,
@@ -20,11 +21,17 @@ const CalendarContent = ({
     showToday,
     onChange,
     formatDate,
-    startOfWeek,
+    startOfWeek = 0,
     holidays,
 }: CalendarOptional & Pick<CalendarRequired, 'onChange'>) => {
     const { customTheme } = useCalendarContext();
     const { themeClass } = useThemeContext();
+
+    const { isError, errorMessage } = StartOfWeekValidator.validate(startOfWeek);
+
+    if (isError) {
+        throw new Error(errorMessage);
+    }
 
     return (
         <div
