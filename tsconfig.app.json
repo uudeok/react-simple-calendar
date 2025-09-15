@@ -8,10 +8,8 @@
         "moduleResolution": "Node",
         "skipLibCheck": true,
 
-        "declaration": true, // 타입 선언 파일 생성
-        "declarationDir": "dist", // 타입 파일 위치
-        "outDir": "dist", // JS 파일 위치
-        "emitDeclarationOnly": true // JS는 Vite가 처리, TS는 타입만 생성
+        "declaration": true,
+        "outDir": "dist"
     },
     "include": ["src/**/*"]
 }

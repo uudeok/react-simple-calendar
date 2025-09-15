@@ -1,8 +1,7 @@
-import { Calendar } from './components/Calendar/Calendar';
+import Calendar from './components/Calendar/Calendar';
 
-// 2. 타입 export
+// 타입 export
 export type { CalendarProps } from './types/calendar';
 
-// 3. named + default export
-export { Calendar }; // named export 유지
+// 기본 export
 export default Calendar;

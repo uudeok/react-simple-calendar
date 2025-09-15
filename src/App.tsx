@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Calendar } from './components/Calendar/Calendar';
+import Calendar from './components/Calendar/Calendar';
 
 function App() {
     const [date1, setDate1] = useState(new Date());

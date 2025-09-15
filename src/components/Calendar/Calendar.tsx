@@ -5,7 +5,7 @@ import ThemeProvider from '../../contexts/ThemeProvider';
 import LocaleProvider from '../../contexts/LocaleProvider';
 import { LOCALE } from '../../constants';
 
-export const Calendar: React.FC<CalendarProps> = (props: CalendarProps) => {
+const Calendar: React.FC<CalendarProps> = (props: CalendarProps) => {
     const { date, onChange, customTheme, theme, locale, ...rest } = props;
 
     return (
@@ -18,3 +18,5 @@ export const Calendar: React.FC<CalendarProps> = (props: CalendarProps) => {
         </ThemeProvider>
     );
 };
+
+export default Calendar;
