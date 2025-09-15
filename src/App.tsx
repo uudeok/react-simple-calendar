@@ -7,23 +7,11 @@ const App: React.FC<CalendarProps> = () => {
 
     const handleDate = (date: Date) => {
         setDate(date);
-        console.log('선택한 날짜 : ', date);
-    };
-
-    const isWeekday = (date: Date) => {
-        const day = date.getDay();
-        return day === 0 || day === 6;
     };
 
     return (
         <div style={{ display: 'flex', gap: '50px', width: '400px', margin: 'auto' }}>
-            <Calendar
-                date={date}
-                onChange={handleDate}
-                minDate={new Date(2025, 8, 1)}
-                showToday
-                filterDate={isWeekday}
-            />
+            <Calendar date={date} onChange={handleDate} />
         </div>
     );
 };
