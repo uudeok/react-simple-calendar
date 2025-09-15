@@ -14,14 +14,6 @@
         "react": "^19.1.0",
         "react-dom": "^19.1.0"
     },
-    "exports": {
-        ".": {
-            "import": "./dist/index.esm.js",
-            "require": "./dist/index.js",
-            "types": "./dist/index.d.ts",
-            "default": "./dist/index.js"
-        }
-    },
     "scripts": {
         "dev": "vite",
         "build": "vite build",
