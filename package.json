@@ -1,15 +1,25 @@
 {
     "name": "react-simple-calendar-light",
+    "version": "1.0.2",
     "private": false,
     "author": "Duuu",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/uudeok/react-simple-calendar"
     },
-    "version": "1.0.2",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
     "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/index.esm.js",
+            "require": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
+    "files": [
+        "dist"
+    ],
     "peerDependencies": {
         "react": "^19.1.0",
         "react-dom": "^19.1.0"
