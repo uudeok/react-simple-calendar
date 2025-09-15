@@ -1,29 +1,26 @@
 {
     "compilerOptions": {
-        "target": "ES5",
+        "target": "ESNext",
         "module": "ESNext",
         "noImplicitAny": true,
         "strictNullChecks": true,
         "useDefineForClassFields": true,
         "lib": ["DOM", "DOM.Iterable", "ESNext"],
         "skipLibCheck": true,
-        "outDir": "./dist",
-        "declaration": true,
 
-        /* Bundler mode */
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "noEmit": false,
+        "noEmit": true, // ✅ 이 부분을 true로 변경
         "jsx": "react-jsx",
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
 
-        /* Linting */
+        "moduleResolution": "Bundler", // ✅ "node" 대신 "Bundler"를 권장
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+
         "strict": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true
     },
-    "include": ["src"]
+    "include": ["./src/**/*.ts", "./src/**/*.tsx", "./src/index.ts"]
 }

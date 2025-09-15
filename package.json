@@ -23,10 +23,11 @@
     },
     "scripts": {
         "dev": "vite",
-        "build": "tsc && vite build",
+        "build": "vite build",
         "prepare": "npm run build",
         "lint": "eslint .",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "publish:npm": "rm -rf dist && mkdir dist && babel src/lib -d dist --copy-files"
     },
     "dependencies": {
         "@vanilla-extract/dynamic": "^2.1.5",
