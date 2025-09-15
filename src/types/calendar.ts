@@ -1,5 +1,6 @@
 import type { FormatType, ValueOf } from '.';
 import type { LOCALE, THEME } from '../constants';
+import type { Holidays } from './holiday';
 
 export type LocaleType = ValueOf<typeof LOCALE>;
 
@@ -25,6 +26,7 @@ export interface CalendarOptional {
     customTheme?: CustomTheme;
     formatDate?: FormatType;
     startOfWeek?: WeekStart;
+    holidays?: Holidays;
 }
 
 export interface CustomTheme {

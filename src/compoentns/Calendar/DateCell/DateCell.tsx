@@ -1,10 +1,11 @@
-import { memo } from 'react';
 import useCalendarContext from '../../../contexts/CaneldarContext';
 import { getDate } from '../../../utils/date';
-import { datecell } from './style.css';
+import { datecell, cellWrapper } from './style.css';
 import { useCalendar } from '../../../hooks/useCalendar';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { customThemeVars, theme } from '../../../styles/theme.css';
+import type { Holidays } from '../../../types/holiday';
+import { memo } from 'react';
 
 type Props = {
     date: Date;
@@ -13,12 +14,13 @@ type Props = {
     maxDate?: Date;
     showToday?: boolean;
     onChange: (date: Date) => void;
+    holidays?: Holidays;
 };
 
 const DateCell = (props: Props) => {
     const { date, filterDate, minDate, maxDate, showToday, onChange } = props;
 
-    const { setSelectedDate, selectedDate, customTheme } = useCalendarContext();
+    const { selectedDate, setSelectedDate, customTheme } = useCalendarContext();
 
     const { isMaxDate, isMinDate, isToday } = useCalendar(date);
 
@@ -33,18 +35,24 @@ const DateCell = (props: Props) => {
     const addTodayStyles = showToday ? isToday() : false;
 
     return (
-        <button
-            onClick={handleDateClick}
-            style={assignInlineVars({
-                [customThemeVars.highlightBg]: customTheme?.highlightBg ?? theme.colors.hightlight,
-                [customThemeVars.highlightColor]: customTheme?.highlightColor ?? theme.colors.white,
-            })}
-            className={datecell({ selected: isSelected, disabled: disabled, isToday: addTodayStyles })}
-            disabled={disabled}
-            aria-label={date.toDateString()}
-        >
-            {getDate(date)}
-        </button>
+        <div className={cellWrapper}>
+            <button
+                onClick={handleDateClick}
+                style={assignInlineVars({
+                    [customThemeVars.highlightBg]: customTheme?.highlightBg ?? theme.colors.hightlight,
+                    [customThemeVars.highlightColor]: customTheme?.highlightColor ?? theme.colors.white,
+                })}
+                className={datecell({
+                    selected: isSelected,
+                    disabled: disabled,
+                    isToday: addTodayStyles,
+                })}
+                disabled={disabled}
+                aria-label={date.toDateString()}
+            >
+                {getDate(date)}
+            </button>
+        </div>
     );
 };
 

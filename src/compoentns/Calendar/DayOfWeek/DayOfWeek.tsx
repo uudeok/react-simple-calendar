@@ -1,18 +1,19 @@
 import { memo } from 'react';
 import { WEEK } from '../../../constants';
 import { layout } from './style.css';
-import type { LocaleType, WeekStart } from '../../../types';
+import type { WeekStart } from '../../../types';
 import { WeekValidator } from '../../../validators';
 import { validateWithFallback } from '../../../utils/validator/validatorHelper';
+import useLocaleContext from '../../../contexts/LocaleContext';
 
 type DayOfWeekProps = {
     customWeek?: string[];
-    locale?: LocaleType;
     startOfWeek?: WeekStart;
 };
 
 const DayOfWeek = (props: DayOfWeekProps) => {
-    const { customWeek, locale = 'ko', startOfWeek = 0 } = props;
+    const { customWeek, startOfWeek = 0 } = props;
+    const locale = useLocaleContext();
 
     const weeks = validateWithFallback(customWeek, WeekValidator, WEEK[locale]);
 

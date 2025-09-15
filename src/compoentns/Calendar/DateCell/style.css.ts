@@ -1,3 +1,4 @@
+import { style } from '@vanilla-extract/css';
 import { customThemeVars, theme } from '../../../styles/theme.css';
 import { typography } from '../../../styles/typography.css';
 import { recipe } from '@vanilla-extract/recipes';
@@ -45,7 +46,7 @@ export const datecell = recipe({
         },
         isToday: {
             true: {
-                border: `1px dashed ${theme.colors.grayLight}`,
+                border: `1px solid ${theme.colors.grayLight}`,
             },
         },
     },
@@ -60,4 +61,23 @@ export const datecell = recipe({
             },
         },
     ],
+});
+
+export const cellWrapper = style({
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    position: 'relative',
+});
+
+export const holidayBottom = style({
+    display: 'block',
+    textAlign: 'center',
+    fontSize: typography.fontSize.caption,
+    color: theme.colors.textPrimary,
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    height: '1rem', // 항상 일정한 높이 확보
 });

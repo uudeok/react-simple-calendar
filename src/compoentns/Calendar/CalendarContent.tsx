@@ -11,7 +11,6 @@ import { theme as globalTheme } from '../../styles/theme.css';
 import useThemeContext from '../../contexts/ThemeContext';
 
 const CalendarContent = ({
-    locale,
     customPrevButton,
     customNextButton,
     customWeek,
@@ -22,6 +21,7 @@ const CalendarContent = ({
     onChange,
     formatDate,
     startOfWeek,
+    holidays,
 }: CalendarOptional & Pick<CalendarRequired, 'onChange'>) => {
     const { customTheme } = useCalendarContext();
     const { themeClass } = useThemeContext();
@@ -39,7 +39,8 @@ const CalendarContent = ({
                 customNextButton={customNextButton}
                 formatDate={formatDate}
             />
-            <DayOfWeek customWeek={customWeek} locale={locale} startOfWeek={startOfWeek} />
+            <DayOfWeek customWeek={customWeek} startOfWeek={startOfWeek} />
+
             <DateGrid
                 filterDate={filterDate}
                 minDate={minDate}
@@ -47,6 +48,7 @@ const CalendarContent = ({
                 showToday={showToday}
                 onChange={onChange}
                 startOfWeek={startOfWeek}
+                holidays={holidays}
             />
         </div>
     );
