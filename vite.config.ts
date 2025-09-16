@@ -5,7 +5,14 @@ import dts from 'vite-plugin-dts';
 import * as path from 'path';
 
 export default defineConfig({
-    plugins: [react(), vanillaExtractPlugin(), dts()],
+    plugins: [
+        react(),
+        vanillaExtractPlugin(),
+        dts({
+            tsconfigPath: './tsconfig.lib.json',
+            insertTypesEntry: true, // dist/index.d.ts 자동 생성
+        }),
+    ],
     build: {
         lib: {
             entry: path.resolve(__dirname, 'src/index.ts'),
