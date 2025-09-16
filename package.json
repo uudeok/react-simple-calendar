@@ -13,20 +13,24 @@
         "month",
         "date"
     ],
-    "version": "1.0.6",
-    "main": "./dist/index.cjs.js",
-    "module": "./dist/index.es.js",
-    "types": "./dist/index.d.ts",
     "exports": {
         ".": {
-            "import": "./dist/index.es.js",
-            "require": "./dist/index.cjs.js"
+            "import": "./dist/index.js",
+            "require": "./dist/index.umd.cjs"
         }
     },
+    "version": "1.0.6",
+    "type": "module",
+    "main": "dist/index.umd.cjs",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
     "peerDependencies": {
         "react": "^19.1.0",
         "react-dom": "^19.1.0"
     },
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "dev": "vite",
         "build": "vite build",
