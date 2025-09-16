@@ -19,7 +19,6 @@
         "noFallthroughCasesInSwitch": true,
 
         "rootDir": "src",
-        "typeRoots": ["node_modules/@types", "@types", "node_modules"],
         "noEmit": true, // 자동js 생성막기 (이거 안해주면 빌드했을 때 같은이름의 js파일 막 생기고 난리남...)
         "noEmitOnError": true // ts파일 에러 시 js파일 생성X
     },

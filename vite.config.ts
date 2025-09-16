@@ -15,7 +15,7 @@ export default defineConfig({
     ],
     build: {
         lib: {
-            entry: path.resolve(__dirname, './src'),
+            entry: path.resolve(__dirname, './src/index.ts'),
             name: 'ReactSimpleCalendar', // UMD 빌드 시 전역 이름
             fileName: (format) => `index.${format}.js`, // 출력 파일 이름
         },

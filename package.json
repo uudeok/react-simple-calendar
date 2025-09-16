@@ -16,28 +16,29 @@
     "exports": {
         ".": {
             "import": "./dist/index.js",
-            "require": "./dist/index.umd.cjs"
+            "require": "./dist/index.umd.cjs",
+            "types": "./dist/index.d.ts"
         }
     },
     "version": "1.0.7",
     "type": "module",
     "module": "dist/index.js",
     "main": "dist/index.es.js",
-    "types": "dist/index.d.ts",
     "peerDependencies": {
-        "react": "^19.1.0",
-        "react-dom": "^19.1.0"
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
     },
     "files": [
-        "dist"
+        "dist",
+        "src",
+        "tsconfig.json"
     ],
     "scripts": {
         "dev": "vite",
-        "build": "rm -rf dist && tsc -p ./tsconfig.node.json && vite build",
+        "build": "rm -rf dist && vite build",
         "prepare": "npm run build",
         "lint": "eslint .",
-        "preview": "vite preview",
-        "publish:npm": "rm -rf dist && mkdir dist && babel src/lib -d dist --copy-files"
+        "preview": "vite preview"
     },
     "dependencies": {
         "@vanilla-extract/dynamic": "^2.1.5",

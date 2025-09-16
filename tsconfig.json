@@ -1,34 +1,26 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        "useDefineForClassFields": true,
-        "lib": ["dom", "dom.iterable", "esnext"],
-        "types": ["vite/client"],
+        "target": "ESNext",
         "module": "ESNext",
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "useDefineForClassFields": true,
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
         "skipLibCheck": true,
-        "baseUrl": ".",
 
-        /* Bundler mode */
+        "noEmit": true, // ✅ 이 부분을 true로 변경
+        "jsx": "react-jsx",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+
         "moduleResolution": "node",
-        "allowImportingTsExtensions": true,
         "resolveJsonModule": true,
         "isolatedModules": true,
-        "jsx": "react-jsx",
 
-        /* Linting */
         "strict": true,
-        "noUnusedLocals": false,
+        "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true,
-
-        "rootDir": "src",
-        "typeRoots": ["node_modules/@types", "@types", "node_modules"],
-        "noEmit": true, // 자동js 생성막기
-        "noEmitOnError": true, // ts파일 에러 시 js파일 생성X
-
-        "allowSyntheticDefaultImports": true // import cryptoJS
+        "noFallthroughCasesInSwitch": true
     },
-    "include": ["src/**/*.ts", "src/**/*.tsx"],
-    "exclude": ["node_modules"],
-    "declaration": true
+    "include": ["./src/**/*.ts"]
 }
