@@ -10,7 +10,7 @@ export default defineConfig({
         vanillaExtractPlugin(),
         dts({
             tsconfigPath: './tsconfig.lib.json',
-            insertTypesEntry: true, // dist/index.d.ts 자동 생성
+            rollupTypes: true,
         }),
     ],
     build: {
