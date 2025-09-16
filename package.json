@@ -22,8 +22,8 @@
     },
     "version": "1.0.9",
     "type": "module",
+    "main": "dist/index.umd.cjs",
     "module": "dist/index.js",
-    "main": "dist/index.es.js",
     "peerDependencies": {
         "react": ">=18 <20",
         "react-dom": ">=18 <20"
