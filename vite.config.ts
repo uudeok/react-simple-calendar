@@ -10,7 +10,7 @@ export default defineConfig({
         vanillaExtractPlugin(),
         dts({
             insertTypesEntry: true, // 타입 정의 진입점을 생성합니다.
-            rollupTypes: true, // 모든 타입을 단일 d.ts 파일로 묶습니다.
+            // rollupTypes: true, // 모든 타입을 단일 d.ts 파일로 묶습니다.
             outDir: 'dist', // 출력 디렉토리를 지정합니다.
         }),
     ],
