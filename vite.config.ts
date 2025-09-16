@@ -5,10 +5,17 @@ import dts from 'vite-plugin-dts';
 import * as path from 'path';
 
 export default defineConfig({
-    plugins: [react(), vanillaExtractPlugin(), dts()],
+    plugins: [
+        react(),
+        vanillaExtractPlugin(),
+        dts({
+            insertTypesEntry: true,
+            tsconfigPath: 'tsconfig.node.json',
+        }),
+    ],
     build: {
         lib: {
-            entry: path.resolve(__dirname, 'src/index.ts'),
+            entry: path.resolve(__dirname, './src'),
             name: 'ReactSimpleCalendar', // UMD 빌드 시 전역 이름
             fileName: (format) => `index.${format}.js`, // 출력 파일 이름
         },
