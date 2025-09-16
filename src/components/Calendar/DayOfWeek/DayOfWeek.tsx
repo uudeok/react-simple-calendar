@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { WEEK } from '../../../constants';
-import { layout } from './style.css';
+import { layout } from './DateOfWeekStyle.css';
 import type { WeekStart } from '../../../types';
 import { WeekValidator } from '../../../validators';
 import { validateWithFallback } from '../../../utils/validator/validatorHelper';

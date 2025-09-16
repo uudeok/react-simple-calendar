@@ -3,7 +3,7 @@ import useCalendarContext from '../../../contexts/CaneldarContext';
 import { useCalendar } from '../../../hooks/useCalendar';
 import type { CalendarOptional } from '../../../types';
 import NavButton from '../../common/Button/NavButton';
-import { layout, monthLabel, navGroup } from './style.css';
+import { layout, monthLabel, navGroup } from './CalendarStyle.css';
 import { customThemeVars, theme } from '../../../styles/theme.css';
 import { FORMAT_DATE } from '../../../constants';
 import { format } from 'date-fns';

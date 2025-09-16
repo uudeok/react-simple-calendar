@@ -5,7 +5,7 @@ import type { WeekStart } from '../../../types';
 import type { Holidays } from '../../../types/holiday';
 import { DateRangeValidator } from '../../../validators/DateRangeValidator';
 import DateCell from '../DateCell/DateCell';
-import { grid } from './style.css';
+import { grid } from './DateGridStyle.css';
 
 type DateGridProps = {
     filterDate?: (date: Date) => boolean;

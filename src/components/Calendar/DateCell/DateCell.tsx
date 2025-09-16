@@ -1,6 +1,6 @@
 import useCalendarContext from '../../../contexts/CaneldarContext';
 import { getDate } from '../../../utils/date';
-import { datecell, cellWrapper } from './style.css';
+import { datecell, cellWrapper } from './DateCellStyle.css';
 import { useCalendar } from '../../../hooks/useCalendar';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { customThemeVars, theme } from '../../../styles/theme.css';

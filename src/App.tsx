@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { CalendarProps } from './types';
-import { Calendar } from './components/Calendar/Calendar';
+import Calendar from './components/Calendar/Calendar';
 
 const App: React.FC<CalendarProps> = () => {
     const [date, setDate] = useState(new Date());
