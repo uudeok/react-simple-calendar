@@ -20,7 +20,7 @@
             "types": "./dist/index.d.ts"
         }
     },
-    "version": "1.0.9",
+    "version": "1.0.10",
     "type": "module",
     "main": "dist/index.umd.cjs",
     "module": "dist/index.js",
