@@ -1,5 +1,6 @@
 import type { FormatType } from '../../types/date';
 import { getMonth, getYear } from './getter';
+import { monthNamesShort, monthNamesFull, FORMAT_DATE } from '../../constants';
 
 export const getDisplayMonth = (date: Date): string => {
     const month = getMonth(date) + 1;
@@ -17,4 +18,22 @@ export const formatDate = (date: Date, format: FormatType) => {
     const day = getDisplayDate(date);
 
     return format.replace('YYYY', year.toString()).replace('MM', month).replace('DD', day);
+};
+
+export const formatSelectedDate = (date: Date, format: FormatType) => {
+    const year = getYear(date);
+    const month = getMonth(date);
+
+    switch (format) {
+        case FORMAT_DATE['yyyy/MM']:
+            return `${year}/${(month + 1).toString().padStart(2, '0')}`;
+        case FORMAT_DATE['yyyy.MM']:
+            return `${year}.${(month + 1).toString().padStart(2, '0')}`;
+        case FORMAT_DATE['MMMM yyyy']:
+            return `${monthNamesFull[month]} ${year}`;
+        case FORMAT_DATE['MMM yyyy']:
+            return `${monthNamesShort[month]} ${year}`;
+        default:
+            return `${year}/${(month + 1).toString().padStart(2, '0')}`;
+    }
 };

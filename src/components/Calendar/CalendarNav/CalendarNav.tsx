@@ -6,9 +6,9 @@ import NavButton from '../../common/Button/NavButton';
 import { layout, monthLabel, navGroup } from './CalendarStyle.css';
 import { customThemeVars, theme } from '../../../styles/theme.css';
 import { FORMAT_DATE } from '../../../constants';
-import { format } from 'date-fns';
 import { validateWithFallback } from '../../../utils/validator/validatorHelper';
 import { FormatDateValidator } from '../../../validators/FormatDateValidator';
+import { formatSelectedDate } from '../../../utils/date';
 
 type CalendarNavProps = Pick<CalendarOptional, 'customNextButton' | 'customPrevButton' | 'formatDate'>;
 
@@ -18,7 +18,9 @@ const CalendarNav = ({ customNextButton, customPrevButton, formatDate }: Calenda
     const { goToNextMonth, goToPrevMonth } = useCalendar(selectedDate);
 
     const safeFormat = validateWithFallback(formatDate, FormatDateValidator, FORMAT_DATE['yyyy.MM']);
-    const displayLabel = format(selectedDate, safeFormat);
+    const displayLabel = formatSelectedDate(selectedDate, safeFormat);
+
+    // const displayLabel = format(selectedDate, safeFormat);
 
     const handlePrevMonth = () => {
         const prevMonth = goToPrevMonth();
