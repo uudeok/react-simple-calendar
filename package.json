@@ -1,6 +1,6 @@
 {
     "name": "react-simple-calendar-light",
-    "version": "1.0.15",
+    "version": "1.0.14",
     "private": false,
     "author": "Duuu",
     "repository": {
@@ -23,7 +23,7 @@
             "import": "./dist/index.js",
             "require": "./dist/index.umd.cjs"
         },
-        "./css": "./dist/react-simple-calendar-light.css"
+        "./react-simple-calendar-light.css": "./dist/react-simple-calendar-light.css"
     },
     "peerDependencies": {
         "react": ">=18 <20",
