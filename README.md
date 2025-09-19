@@ -53,7 +53,7 @@ function App() {
         setSelectedDate(newDate);
     };
 
-    return <Calendar value={selectedDate} onChange={handleDateChange} />;
+    return <Calendar date={selectedDate} onChange={handleDateChange} />;
 }
 
 export default App;

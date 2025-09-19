@@ -2,9 +2,9 @@ import { memo } from 'react';
 import { WEEK } from '../../../constants';
 import { layout } from './DateOfWeekStyle.css';
 import type { WeekStart } from '../../../types';
-import { WeekValidator } from '../../../validators';
 import { validateWithFallback } from '../../../utils/validator/validatorHelper';
 import useLocaleContext from '../../../contexts/LocaleContext';
+import { WeekValidator } from '../../../validators/WeekValidator';
 
 type DayOfWeekProps = {
     customWeek?: string[];
