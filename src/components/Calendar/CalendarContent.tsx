@@ -62,5 +62,3 @@ const CalendarContent = ({
 };
 
 export default CalendarContent;
-
-/** Vanilla extract 는 빌드시에 전환되어서 런타임때 동적으로 뭐가 어려워 */
