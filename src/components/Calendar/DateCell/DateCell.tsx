@@ -1,5 +1,5 @@
 import useCalendarContext from '../../../contexts/CaneldarContext';
-import { getDate } from '../../../utils/date';
+import { formatDateToISO, getDate } from '../../../utils/date';
 import { datecell, cellWrapper } from './DateCellStyle.css';
 import { useCalendar } from '../../../hooks/useCalendar';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
@@ -24,13 +24,17 @@ const DateCell = (props: Props) => {
 
     const { isMaxDate, isMinDate, isToday } = useCalendar(date);
 
+    if (!(date instanceof Date)) {
+        return null;
+    }
+
     const handleDateClick = () => {
         setSelectedDate(date);
         onChange(date);
     };
 
     const isSelected = date.toDateString() === selectedDate.toDateString();
-    const disabledByFilter = filterDate ? filterDate(date) : false;
+    const disabledByFilter = filterDate ? !filterDate(date) : false;
     const disabled = disabledByFilter || isMaxDate(maxDate) || isMinDate(minDate);
     const addTodayStyles = showToday ? isToday() : false;
 
@@ -48,7 +52,8 @@ const DateCell = (props: Props) => {
                     isToday: addTodayStyles,
                 })}
                 disabled={disabled}
-                aria-label={date.toDateString()}
+                aria-label={formatDateToISO(date)}
+                aria-selected={isSelected}
             >
                 {getDate(date)}
             </button>

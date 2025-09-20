@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import dts from 'vite-plugin-dts';
@@ -13,6 +13,11 @@ export default defineConfig({
             outDir: 'dist',
         }),
     ],
+    test: {
+        globals: true,
+        environment: 'jsdom',
+        setupFiles: './src/utils/test/setupTests.js',
+    },
     build: {
         lib: {
             entry: path.resolve(__dirname, './src/index.ts'),

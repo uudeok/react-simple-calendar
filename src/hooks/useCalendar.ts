@@ -1,6 +1,5 @@
-import type { ReactNode } from 'react';
 import type { WeekStart } from '../types';
-import type { HolidayItem } from '../types/holiday';
+
 import { getMonth, getYear } from '../utils/date';
 
 const today = new Date();
@@ -56,12 +55,11 @@ export const useCalendar = (date: Date) => {
         return matchToday;
     };
 
-    const map = new Map<string, ReactNode>();
+    // const holidayMap = (holidays?: HolidayItem[]) => {
+    //     holidays?.forEach((h) => map.set(h.date.toDateString(), h.name));
+    //     return map;
+    // };
 
-    const holidayMap = (holidays?: HolidayItem[]) => {
-        holidays?.forEach((h) => map.set(h.date.toDateString(), h.name));
-        return map;
-    };
-
-    return { goToPrevMonth, goToNextMonth, generateDates, isMaxDate, isMinDate, isToday, holidayMap };
+    // return { goToPrevMonth, goToNextMonth, generateDates, isMaxDate, isMinDate, isToday, holidayMap };
+    return { goToPrevMonth, goToNextMonth, generateDates, isMaxDate, isMinDate, isToday };
 };

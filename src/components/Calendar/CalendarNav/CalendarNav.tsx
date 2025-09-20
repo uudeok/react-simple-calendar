@@ -20,8 +20,6 @@ const CalendarNav = ({ customNextButton, customPrevButton, formatDate }: Calenda
     const safeFormat = validateWithFallback(formatDate, FormatDateValidator, FORMAT_DATE['yyyy.MM']);
     const displayLabel = formatSelectedDate(selectedDate, safeFormat);
 
-    // const displayLabel = format(selectedDate, safeFormat);
-
     const handlePrevMonth = () => {
         const prevMonth = goToPrevMonth();
         setSelectedDate(prevMonth);

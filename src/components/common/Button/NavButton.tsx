@@ -14,6 +14,7 @@ const NavButton = (props: Props) => {
 
     return (
         <button
+            aria-label={direction === 'prev' ? 'prev button' : 'next button'}
             className={navButton}
             onClick={onClick}
             style={assignInlineVars({

@@ -12,14 +12,6 @@ export const getDisplayDate = (date: Date): string => {
     return newDate.toString().padStart(2, '0');
 };
 
-export const formatDate = (date: Date, format: FormatType) => {
-    const year = getYear(date);
-    const month = getDisplayMonth(date);
-    const day = getDisplayDate(date);
-
-    return format.replace('YYYY', year.toString()).replace('MM', month).replace('DD', day);
-};
-
 export const formatSelectedDate = (date: Date, format: FormatType) => {
     const year = getYear(date);
     const month = getMonth(date);
@@ -36,4 +28,8 @@ export const formatSelectedDate = (date: Date, format: FormatType) => {
         default:
             return `${year}/${(month + 1).toString().padStart(2, '0')}`;
     }
+};
+
+export const formatDateToISO = (date: Date): string => {
+    return date.toISOString().split('T')[0];
 };

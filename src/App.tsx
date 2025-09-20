@@ -15,9 +15,9 @@ const App: React.FC<CalendarProps> = () => {
         setDate2(date);
     };
 
+    /** true 면 선택 가능, false 면 disabled 처리 */
     const isWeekDay = (date: Date) => {
-        const isWeekend = date.getDate() === 1 || date.getDate() === 0;
-
+        const isWeekend = date.getDay() !== 0 && date.getDay() !== 6;
         return isWeekend;
     };
 
