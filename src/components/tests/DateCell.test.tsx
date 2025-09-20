@@ -18,7 +18,6 @@ describe('DateCell', () => {
 
     const mockSetSelectedDate = vi.fn();
 
-    // 캐스팅
     const mockedUseCalendarContext = useCalendarContext as MockedFunction<typeof useCalendarContext>;
     const mockedUseCalendar = useCalendar as MockedFunction<(date: Date) => UseCalendarReturn>;
 
@@ -50,6 +49,7 @@ describe('DateCell', () => {
 
         const mockOnChange = vi.fn();
 
+        // @ts-expect-error: 테스트용으로 잘못된 타입 전달
         const { container } = render(<DateCell date={INVALID_DATE} onChange={mockOnChange} />);
 
         expect(container.firstChild).eq(null);
