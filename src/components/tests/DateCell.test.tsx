@@ -36,6 +36,8 @@ describe('DateCell', () => {
         mockedUseCalendar.mockImplementation((date: Date) => ({
             goToNextMonth: vi.fn(() => SAMPLE_DATE),
             goToPrevMonth: vi.fn(() => SAMPLE_DATE),
+
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             generateDates: vi.fn((totalCells: number, startOfWeek: WeekStart = 0) => [SAMPLE_DATE]),
 
             isMaxDate: vi.fn(() => false),
