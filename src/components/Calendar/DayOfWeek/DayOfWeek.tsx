@@ -21,8 +21,10 @@ const DayOfWeek = (props: DayOfWeekProps) => {
 
     return (
         <div className={layout}>
-            {rotatedWeeks.map((week) => (
-                <span key={week}>{week}</span>
+            {rotatedWeeks.map((week, index) => (
+                <span key={week} aria-label={`day-${index}`}>
+                    {week}
+                </span>
             ))}
         </div>
     );
