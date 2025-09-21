@@ -26,6 +26,21 @@ describe('DayOfWeek', () => {
         });
     });
 
+    it('잘못된 customWeek 배열이 들어오면 default WEEK[ko] 가 렌더링 된다.', () => {
+        // customWeek 길이가 7이 아님 → invalid
+        const invalidCustomWeek = ['X', 'Y', 'Z'];
+        render(<DayOfWeek customWeek={invalidCustomWeek} />);
+
+        WEEK.ko.forEach((day) => {
+            expect(screen.getByText(day)).toBeInTheDocument();
+        });
+
+        // invalid 값이 렌더링되지 않았는지도 체크
+        expect(screen.queryByText('X')).not.toBeInTheDocument();
+        expect(screen.queryByText('Y')).not.toBeInTheDocument();
+        expect(screen.queryByText('Z')).not.toBeInTheDocument();
+    });
+
     it('startOfWeek 가 있으면 요일 순서가 회전됨', () => {
         render(<DayOfWeek startOfWeek={1} />);
 
