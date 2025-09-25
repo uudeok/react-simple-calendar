@@ -22,11 +22,7 @@ const DayOfWeek = (props: DayOfWeekProps) => {
     return (
         <div className={layout}>
             {rotatedWeeks.map((week, index) => (
-                <span
-                    key={week}
-                    aria-label={new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(startOfWeek)}
-                    data-testid={`day-${index}`}
-                >
+                <span key={week} aria-label={week} data-testid={`day-${index}`}>
                     {week}
                 </span>
             ))}
