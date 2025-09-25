@@ -58,33 +58,28 @@ describe('DateCell', () => {
     });
 
     it('filterDate가 없으면 항상 enabled 된다.', () => {
-        const FILTERED_DATE_STRING = '2025-01-10';
-        const FILTERED_DATE = new Date(FILTERED_DATE_STRING);
-
+        const FILTERED_DATE = new Date('2025-01-10');
         const mockOnChange = vi.fn();
 
         render(<DateCell date={FILTERED_DATE} onChange={mockOnChange} />);
 
-        const disabledCell = screen.getByRole('button', { name: FILTERED_DATE_STRING });
+        const formattedLabel = new Intl.DateTimeFormat('ko', { dateStyle: 'full' }).format(FILTERED_DATE);
+        const cell = screen.getByRole('button', { name: formattedLabel });
 
-        // disabled 여부 확인
-        expect(disabledCell).toBeEnabled();
+        expect(cell).toBeEnabled();
     });
 
     it('filterDate로 비활성화된 날짜는 클릭할 수 없다', () => {
-        const FILTERED_DATE_STRING = '2025-01-10';
-        const FILTERED_DATE = new Date(FILTERED_DATE_STRING);
-
+        const FILTERED_DATE = new Date('2025-01-10');
         const mockOnChange = vi.fn();
 
-        // 10일이면 false -> disabled, 나머지는 true
         const filterDate = (date: Date) => date.getDate() !== 10;
 
         render(<DateCell date={FILTERED_DATE} onChange={mockOnChange} filterDate={filterDate} />);
 
-        const disabledCell = screen.getByRole('button', { name: FILTERED_DATE_STRING });
+        const formattedLabel = new Intl.DateTimeFormat('ko', { dateStyle: 'full' }).format(FILTERED_DATE);
+        const disabledCell = screen.getByRole('button', { name: formattedLabel });
 
-        // disabled 여부 확인
         expect(disabledCell).toBeDisabled();
     });
 });

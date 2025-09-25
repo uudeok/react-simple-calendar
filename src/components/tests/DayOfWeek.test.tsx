@@ -44,7 +44,7 @@ describe('DayOfWeek', () => {
     it('startOfWeek 가 있으면 요일 순서가 회전됨', () => {
         render(<DayOfWeek startOfWeek={1} />);
 
-        const spans = WEEK.ko.map((_, idx) => screen.getByLabelText(`day-${idx}`));
+        const spans = WEEK.ko.map((_, idx) => screen.getByTestId(`day-${idx}`));
 
         const expectedOrder = ['월', '화', '수', '목', '금', '토', '일'];
         spans.forEach((span, i) => expect(span.textContent).toBe(expectedOrder[i]));

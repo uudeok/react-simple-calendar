@@ -1,11 +1,12 @@
 import useCalendarContext from '../../../contexts/CaneldarContext';
-import { formatDateToISO, getDate } from '../../../utils/date';
+import { getDate } from '../../../utils/date';
 import { datecell, cellWrapper } from './DateCellStyle.css';
 import { useCalendar } from '../../../hooks/useCalendar';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { customThemeVars, theme } from '../../../styles/theme.css';
 import type { Holidays } from '../../../types/holiday';
 import { memo } from 'react';
+import useLocaleContext from '../../../contexts/LocaleContext';
 
 type Props = {
     date: Date;
@@ -19,6 +20,8 @@ type Props = {
 
 const DateCell = (props: Props) => {
     const { date, filterDate, minDate, maxDate, showToday, onChange } = props;
+
+    const locale = useLocaleContext();
 
     const { selectedDate, setSelectedDate, customTheme } = useCalendarContext();
 
@@ -52,7 +55,7 @@ const DateCell = (props: Props) => {
                     isToday: addTodayStyles,
                 })}
                 disabled={disabled}
-                aria-label={formatDateToISO(date)}
+                aria-label={new Intl.DateTimeFormat(locale, { dateStyle: 'full' }).format(date)}
                 aria-selected={isSelected}
             >
                 {getDate(date)}
