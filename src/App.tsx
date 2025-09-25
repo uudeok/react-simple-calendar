@@ -49,6 +49,7 @@ const App: React.FC<CalendarProps> = () => {
                     locale="en"
                     startOfWeek={1}
                     formatDate="MMMM yyyy"
+                    keyboardNavigation
                 />
             </div>
         </>

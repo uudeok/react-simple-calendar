@@ -19,6 +19,7 @@ It’s designed to be simple, extensible, and ready for future integration with 
 -   👀 **Month Navigation** - Browse previous and next months seamlessly
 -   ☀️ **Today Highlighting** - Clear visual distinction for the current date
 -   🗓️ **Min/Max Date** - Restrict selectable dates with `minDate` and `maxDate`
+-   ⌨️ **Keyboard Navigation** - Navigate with arrow keys, PageUp/PageDown, Enter, and Space
 
 ### Customization
 
@@ -67,22 +68,23 @@ export default App;
 
 ## Props
 
-| Prop Name        | Type                    | Description                                          |
-| ---------------- | ----------------------- | ---------------------------------------------------- |
-| date             | Date                    | Currently selected date. **Required**                |
-| onChange         | (date: Date) => void    | Callback when the date changes. **Required**         |
-| theme            | ThemeType               | Built-in theme, e.g., "light" or "dark"              |
-| locale           | LocaleType              | Language for the calendar ("en" or "ko")             |
-| customPrevButton | React.ReactNode         | Custom previous month button                         |
-| customNextButton | React.ReactNode         | Custom next month button                             |
-| customWeek       | string[]                | Custom weekday names                                 |
-| filterDate       | (date: Date) => boolean | Function to filter selectable dates                  |
-| minDate          | Date                    | Minimum selectable date                              |
-| maxDate          | Date                    | Maximum selectable date                              |
-| showToday        | boolean                 | Highlight today's date                               |
-| customTheme      | CustomTheme             | Colors for background, text, and highlights          |
-| formatDate       | FormatType              | Function or format string to display dates           |
-| startOfWeek      | WeekStart               | First day of the week (0 = Sunday, 1 = Monday, etc.) |
+| Prop Name          | Type                    | Description                                          |
+| ------------------ | ----------------------- | ---------------------------------------------------- |
+| date               | Date                    | Currently selected date. **Required**                |
+| onChange           | (date: Date) => void    | Callback when the date changes. **Required**         |
+| theme              | ThemeType               | Built-in theme, e.g., "light" or "dark"              |
+| locale             | LocaleType              | Language for the calendar ("en" or "ko")             |
+| customPrevButton   | React.ReactNode         | Custom previous month button                         |
+| customNextButton   | React.ReactNode         | Custom next month button                             |
+| customWeek         | string[]                | Custom weekday names                                 |
+| filterDate         | (date: Date) => boolean | Function to filter selectable dates                  |
+| minDate            | Date                    | Minimum selectable date                              |
+| maxDate            | Date                    | Maximum selectable date                              |
+| showToday          | boolean                 | Highlight today's date                               |
+| customTheme        | CustomTheme             | Colors for background, text, and highlights          |
+| formatDate         | FormatType              | Function or format string to display dates           |
+| startOfWeek        | WeekStart               | First day of the week (0 = Sunday, 1 = Monday, etc.) |
+| keyboardNavigation | boolean                 | Enable keyboard navigation (default: false)          |
 
 ---
 

@@ -5,18 +5,6 @@ import { getMonth, getYear } from '../utils/date';
 const today = new Date();
 
 export const useCalendar = (date: Date) => {
-    const goToPrevMonth = () => {
-        const prev = new Date(date);
-        prev.setMonth(prev.getMonth() - 1);
-        return prev;
-    };
-
-    const goToNextMonth = () => {
-        const next = new Date(date);
-        next.setMonth(next.getMonth() + 1);
-        return next;
-    };
-
     const generateDates = (totalCells: number, startOfWeek: WeekStart = 0) => {
         const year = getYear(date);
         const month = getMonth(date);
@@ -55,11 +43,5 @@ export const useCalendar = (date: Date) => {
         return matchToday;
     };
 
-    // const holidayMap = (holidays?: HolidayItem[]) => {
-    //     holidays?.forEach((h) => map.set(h.date.toDateString(), h.name));
-    //     return map;
-    // };
-
-    // return { goToPrevMonth, goToNextMonth, generateDates, isMaxDate, isMinDate, isToday, holidayMap };
-    return { goToPrevMonth, goToNextMonth, generateDates, isMaxDate, isMinDate, isToday };
+    return { generateDates, isMaxDate, isMinDate, isToday };
 };

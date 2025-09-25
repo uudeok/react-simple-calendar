@@ -1,6 +1,5 @@
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import useCalendarContext from '../../../contexts/CaneldarContext';
-import { useCalendar } from '../../../hooks/useCalendar';
 import type { CalendarOptional } from '../../../types';
 import NavButton from '../../common/Button/NavButton';
 import { layout, monthLabel, navGroup } from './CalendarStyle.css';
@@ -8,7 +7,7 @@ import { customThemeVars, theme } from '../../../styles/theme.css';
 import { FORMAT_DATE } from '../../../constants';
 import { validateWithFallback } from '../../../utils/validator/validatorHelper';
 import { FormatDateValidator } from '../../../validators/FormatDateValidator';
-import { formatSelectedDate } from '../../../utils/date';
+import { formatSelectedDate, goToNextMonth, goToPrevMonth } from '../../../utils/date';
 import useLocaleContext from '../../../contexts/LocaleContext';
 
 type CalendarNavProps = Pick<CalendarOptional, 'customNextButton' | 'customPrevButton' | 'formatDate'>;
@@ -16,20 +15,18 @@ type CalendarNavProps = Pick<CalendarOptional, 'customNextButton' | 'customPrevB
 const CalendarNav = ({ customNextButton, customPrevButton, formatDate }: CalendarNavProps) => {
     const { selectedDate, setSelectedDate, customTheme } = useCalendarContext();
 
-    const { goToNextMonth, goToPrevMonth } = useCalendar(selectedDate);
-
     const locale = useLocaleContext();
 
     const safeFormat = validateWithFallback(formatDate, FormatDateValidator, FORMAT_DATE['yyyy.MM']);
     const displayLabel = formatSelectedDate(selectedDate, safeFormat);
 
     const handlePrevMonth = () => {
-        const prevMonth = goToPrevMonth();
+        const prevMonth = goToPrevMonth(selectedDate);
         setSelectedDate(prevMonth);
     };
 
     const handleNextMonth = () => {
-        const nextMonth = goToNextMonth();
+        const nextMonth = goToNextMonth(selectedDate);
         setSelectedDate(nextMonth);
     };
 

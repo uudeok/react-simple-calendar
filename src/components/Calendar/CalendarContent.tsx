@@ -10,6 +10,7 @@ import DayOfWeek from './DayOfWeek/DayOfWeek';
 import { theme as globalTheme } from '../../styles/theme.css';
 import useThemeContext from '../../contexts/ThemeContext';
 import { StartOfWeekValidator } from '../../validators/StartOfWeekValidator';
+import { useKeyboardNav } from '../../hooks/useKeyboardNav';
 
 const CalendarContent = ({
     customPrevButton,
@@ -23,6 +24,7 @@ const CalendarContent = ({
     formatDate,
     startOfWeek = 0,
     holidays,
+    keyboardNavigation = false,
 }: CalendarOptional & Pick<CalendarRequired, 'onChange'>) => {
     const { customTheme } = useCalendarContext();
     const { themeClass } = useThemeContext();
@@ -32,6 +34,8 @@ const CalendarContent = ({
     if (isError) {
         throw new Error(errorMessage);
     }
+
+    useKeyboardNav(keyboardNavigation);
 
     return (
         <div

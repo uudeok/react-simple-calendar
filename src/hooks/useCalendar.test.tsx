@@ -5,21 +5,6 @@ import { useCalendar } from './useCalendar';
 const JAN_15_2025 = new Date('2025-01-15');
 
 describe('useCalendar', () => {
-    it('goToNextMonth 는 다음 달의 Date 객체를 반환한다', () => {
-        const { result } = renderHook(() => useCalendar(new Date(JAN_15_2025)));
-        const next = result.current.goToNextMonth();
-
-        expect(next.getFullYear()).toBe(2025);
-        expect(next.getMonth()).toBe(1); // 0-based, → 2월
-    });
-
-    it('goToPrevMonth는 이전 달의 Date 객체를 반환한다', () => {
-        const { result } = renderHook(() => useCalendar(new Date(JAN_15_2025)));
-        const prev = result.current.goToPrevMonth();
-        expect(prev.getFullYear()).toBe(2024);
-        expect(prev.getMonth()).toBe(11); // 12월
-    });
-
     it('generateDates는 지정된 개수만큼 Date 배열을 생성한다', () => {
         const TOTAL_CELLS = 42; // 총 렌더렝 되는 날짜 갯수
         const START_WEEK = 0; // 일요일

@@ -27,6 +27,7 @@ export interface CalendarOptional {
     formatDate?: FormatType;
     startOfWeek?: WeekStart;
     holidays?: Holidays;
+    keyboardNavigation?: boolean;
 }
 
 export interface CustomTheme {
