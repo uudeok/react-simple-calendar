@@ -2,6 +2,7 @@ import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { it, expect, vi } from 'vitest';
 import Calendar from '../Calendar/Calendar';
+import { ARIA_LABELS } from '../../constants/lang';
 
 it('넘겨준 date 값으로 연도와 월을 표시한다', () => {
     const mockOnChange = vi.fn();
@@ -62,7 +63,7 @@ it('다음 달 버튼 클릭 시 월이 변경된다', () => {
 
     render(<Calendar date={customDate} onChange={mockOnChange} />);
 
-    const nextBtn = screen.getByRole('button', { name: 'next button' });
+    const nextBtn = screen.getByRole('button', { name: ARIA_LABELS.ko.nextButton });
     fireEvent.click(nextBtn);
 
     expect(screen.getByText('2025.02')).toBeInTheDocument();
@@ -74,7 +75,7 @@ it('이전 달 버튼 클릭 시 월이 변경된다', () => {
 
     render(<Calendar date={customDate} onChange={mockOnChange} />);
 
-    const nextBtn = screen.getByRole('button', { name: 'prev button' });
+    const nextBtn = screen.getByRole('button', { name: ARIA_LABELS.ko.prevButton });
     fireEvent.click(nextBtn);
 
     expect(screen.getByText('2024.12')).toBeInTheDocument();
