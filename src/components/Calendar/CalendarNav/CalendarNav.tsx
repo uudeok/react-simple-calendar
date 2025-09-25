@@ -9,6 +9,7 @@ import { FORMAT_DATE } from '../../../constants';
 import { validateWithFallback } from '../../../utils/validator/validatorHelper';
 import { FormatDateValidator } from '../../../validators/FormatDateValidator';
 import { formatSelectedDate } from '../../../utils/date';
+import useLocaleContext from '../../../contexts/LocaleContext';
 
 type CalendarNavProps = Pick<CalendarOptional, 'customNextButton' | 'customPrevButton' | 'formatDate'>;
 
@@ -16,6 +17,8 @@ const CalendarNav = ({ customNextButton, customPrevButton, formatDate }: Calenda
     const { selectedDate, setSelectedDate, customTheme } = useCalendarContext();
 
     const { goToNextMonth, goToPrevMonth } = useCalendar(selectedDate);
+
+    const locale = useLocaleContext();
 
     const safeFormat = validateWithFallback(formatDate, FormatDateValidator, FORMAT_DATE['yyyy.MM']);
     const displayLabel = formatSelectedDate(selectedDate, safeFormat);
@@ -37,6 +40,7 @@ const CalendarNav = ({ customNextButton, customPrevButton, formatDate }: Calenda
                 style={assignInlineVars({
                     [customThemeVars.color]: customTheme?.color ?? theme.colors.textPrimary,
                 })}
+                aria-label={new Intl.DateTimeFormat(locale, { dateStyle: 'long' }).format(selectedDate)}
             >
                 <span>{displayLabel}</span>
             </div>
